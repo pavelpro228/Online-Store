@@ -1,0 +1,38 @@
+.text-about,
+.images-about {
+    width: 50%;
+}
+.images-about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: justify;
+}
+.text-about p {
+    width: 500px;
+    font-size: 35px;
+    color: rgb(66, 66, 66);
+    font-weight: bold;
+}
+
+.images {
+    text-align: center;
+    display:grid;
+    width: 100%;
+    justify-content: center;
+    grid-template-columns: 200px 200px;
+    grid-column-gap: 150px;
+}
+.images img {
+    width: 300px;
+    border-radius:10px;
+}
+.images img:hover {
+    transform: translateY(-5px);
+}

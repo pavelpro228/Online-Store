@@ -1,0 +1,39 @@
+.pre-ordered-product {
+    background-color: rgb(207, 207, 207);
+    border-radius: 10px;
+    padding: 10px;
+    width: 80%;
+}
+.image-in-basket {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.price-basket {
+    padding-left: 30px;
+}
+.delete-product-from-basket {
+    padding-right: 30px;
+}
+.price-basket,
+.delete-product-from-basket {
+    margin-top: 20px;
+}
+.product-name-in-basket {
+    font-weight: bold;
+    font-size: 30px;
+}
+.product-name-value-in-basket {
+    font-size: 30px;
+}
+.price-basket {
+    font-size: 30px;
+}
+.delete-product-from-basket {
+    transition: 0.3s;
+}
+.delete-product-from-basket:hover {
+    cursor: pointer;
+    color: rgb(53, 53, 53);
+}

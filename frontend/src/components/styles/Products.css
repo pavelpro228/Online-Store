@@ -1,0 +1,118 @@
+.card {
+    width: 350px;
+    height: 480px;
+    background-color: white;
+    margin: 20px;    
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+.product-name {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.card .image {
+    width: 70%;
+}
+.products {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: repeat(4, auto);
+    grid-column-gap: 100px;
+}
+.price-and-backet {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.price,
+.backet-icon {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+}
+.price {
+    font-size: 30px;
+}
+.backet-icon {
+    font-size: 40px;
+    transition: 0.3s;
+}
+.backet-icon:hover {
+    color: rgb(91, 91, 91);
+}
+.btn-open-backet {
+    padding: 15px;
+    outline: none;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    transition: 0.3s;
+}
+.btn-open-backet:hover {
+    cursor: pointer;
+    background-color: rgb(231, 231, 231);
+    transform: translateY(-5px);
+}
+
+@-ms-keyframes spin {
+    from { -ms-transform: rotate(0deg); }
+    to { -ms-transform: rotate(360deg); }
+}
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from { transform:rotate(0deg); }
+    to { transform:rotate(360deg); }
+}
+.preloader {
+    width: 100%;
+    width: 30px;
+    height: 30px;
+    border: 7px solid #000;
+    border-left-color: #333;
+    border-right-color: transparent;
+    border-bottom-color: #555;
+    border-radius: 100%;
+    
+    -webkit-animation: spin 600ms infinite linear;
+    -moz-animation: spin 600ms infinite linear;
+    -ms-animation: spin 600ms infinite linear;
+    animation: spin 600ms infinite linear;
+}
+
+
+
+
+
+@media(max-width: 1900px) {
+    .products {
+        grid-template-columns: repeat(3, auto);
+    }
+}
+@media(max-width: 1370px) {
+    .products {
+        grid-template-columns: repeat(2, auto);
+    }
+}
+@media(max-width: 865px) {
+    .products {
+        display: block;
+    }
+    .card {
+        width: 100%;
+        margin: 0;
+        border-top: 1px solid black;
+        border-radius: 0;
+    }
+    .card .image {
+        width: 230px;
+    }
+}

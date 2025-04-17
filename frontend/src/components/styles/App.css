@@ -1,0 +1,65 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+p {
+  color: white;
+  margin: 0;
+}
+
+.content-main-page,
+.reviews-components,
+.content,
+.contacts,
+.authorization,
+.my-info,
+.basket {
+  min-height: 679px;
+}
+.search {
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.search-icon {
+  font-size: 30px;
+  margin-left: 10px;
+}
+.product-cards {
+  width: 80%;
+  height: 92%;
+}
+.row {
+  width: 100%;
+  height: 51%;
+  display: flex;
+  justify-content: space-between;
+}
+.image {
+  width: 200px;
+  border-radius: 20px;
+}
+.product-name {
+  color: black;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Inconsolata", monospace;
+  font-size: 30px;
+}
+.about-PC {
+  height: 100vh;
+}
+.icon-close {
+  font-size: 50px;
+  position: relative;
+  right: -96%;
+}
+.main-image-computer {
+  border: 1px solid black;
+  height: 600px;
+  margin: 100px;
+  width: 400px;
+}

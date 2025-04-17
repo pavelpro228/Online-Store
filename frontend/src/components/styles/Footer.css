@@ -1,0 +1,70 @@
+footer {
+    background-color: rgb(74, 74, 74);
+    height: 150px;
+    display: flex;
+    justify-content: center;
+}
+.networks{
+    padding: 0;
+    list-style: none;
+    width: 50%;
+    text-align: center;
+    display: flex;
+    margin: auto;
+}
+.list {
+    position: absolute;
+    background-color: black;
+    border-radius: 10px;
+    
+    padding: 0;
+    width: 230px;
+    right: 405px;
+    top: 620px;
+}
+.list li {
+    color: white;
+    padding: 10px;
+    font-size: 30px;
+    text-align: left;
+    transition: 0.3s;
+    border-radius: 10px;
+}
+.list li:hover {
+    cursor: pointer;
+    background-color: rgb(61, 61, 61);
+}
+.shop-info {
+    width: 34%;
+}
+.shop-info p {
+    font-size: 25px;
+}
+.burger-menu {
+    display: none;
+}
+.social-networks-links-footer {
+    width: 50%;
+    text-align: center;
+    margin: auto auto;
+}
+.social-networks-links-footer p {
+    color: rgb(20, 20, 20);
+    font-weight: bold;
+    font-size: 30px; 
+}
+.social-networks-links-footer ul {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+.social-networks-links-footer a {
+    text-decoration: none;
+    color: rgb(20, 20, 20);
+    font-size: 35px;
+    transition: 0.2s;
+    padding: 10px;
+}
+.social-networks-links-footer a:hover {
+    color: rgb(10, 10, 10);
+}

@@ -1,0 +1,22 @@
+.autocomplete {
+    width: 600px;
+    list-style: none;
+    text-align: left;
+    position: absolute;
+    background-color: white;
+    max-height: 250px;
+    overflow: auto;
+}
+.autocomplete__item {
+    padding: 10px;
+    transition: 0.3s;
+}
+.autocomplete__item:hover {
+    cursor: pointer;
+    background-color: rgb(158, 158, 158);
+}
+@media(max-width: 780px) {
+    .autocomplete {
+        width: 400px;
+    }
+}

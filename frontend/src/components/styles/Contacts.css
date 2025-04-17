@@ -1,0 +1,63 @@
+.contacts h1 {
+    padding: 20px;
+    color: rgb(66, 66, 66);
+    font-size: 65px;
+    text-align: center;
+}
+.list-contacts ul {
+    display: block;
+}
+.list-contacts li {
+    padding: 10px;
+    list-style: outside;
+    text-align: start;
+    font-size: 20px;
+    color: rgb(66, 66, 66);
+    text-align: center;
+}
+.social-networks-links p {
+    color: rgb(66, 66, 66);
+    font-weight: bold;
+    font-size: 30px; 
+    padding-top: 20px;
+    text-align: center;
+}
+.social-networks-links a {
+    text-decoration: none;
+    color: rgb(66, 66, 66);
+    font-size: 35px;
+    transition: 0.2s;
+}
+.social-networks-links a:hover {
+    color: rgb(53, 53, 53);
+}
+.field-name {
+    text-align: left;
+    width: 100px;
+}
+.btn-add-review {
+    text-align: right;
+    margin: auto;
+}
+.btn-add-review button {
+    margin: 10px;
+    margin-right: 50px;
+    padding: 10px;
+    outline: none;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    transition: 0.3s;
+}
+.btn-add-review button:hover {
+    cursor: pointer;
+    transform: translateY(-5px);
+}
+.social-networks-links ul {
+    display: flex;
+}
+.social-networks-links li {
+    list-style: none;
+}
