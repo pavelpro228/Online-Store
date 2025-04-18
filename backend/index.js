@@ -133,13 +133,16 @@ app.post('/api/baskets', async (req, res) => {
   try {
     const { email, product } = req.body
 
-    const newBasket = new basketModel({
-      email,
-      product,
-    })
-
-    const save = await newBasket.save()
-    return res.status(200).json({ message: 'Product added to basket!' }, save)
+    if (email) {
+      const newBasket = new basketModel({
+        email,
+        product,
+      })
+  
+      const save = await newBasket.save()
+      return res.status(200).json({ message: 'Product added to basket!' }, save)
+    }
+    return res.status(400).json({ error: 'You are not authorized!' })
   } catch (error) {
     console.log(error)
     return res.status(400).json({ error: 'Error' })
