@@ -55,13 +55,11 @@
     width: 100%;
 }
 .feedback-name,
-.feedback-email,
 .feedback-review {
     display: flex;
 }
 
 .feedback-name input,
-.feedback-email input,
 .feedback-review textarea {
     font-size: 25px;
     width: 400px;

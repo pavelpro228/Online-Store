@@ -14,6 +14,7 @@ import Authorization from './components/Authorization'
 import MyInfo from './components/MyInfo'
 
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
+import ProductPage from './components/ProductPage'
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/reviews" element={<Reviews />} />
           <Route path="/authorization" element={<Authorization />} />
           <Route path="/myInfo" element={<MyInfo />} />
+          <Route path="/product/:id" element={<ProductPage />} />
         </Routes>
         <Footer />
       </Router>

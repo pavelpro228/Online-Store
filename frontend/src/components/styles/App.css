@@ -13,7 +13,8 @@ p {
 .contacts,
 .authorization,
 .my-info,
-.basket {
+.basket,
+.product-page {
   min-height: 679px;
 }
 .search {

@@ -17,16 +17,19 @@ app.post('/api/add-review', async (req, res) => {
   try {
     const { userName, email, text } = req.body
 
-    if (!userName || !email || !userName)
-      return res.status(400).json({ message: 'Enter the values!' })
-
-    const newReview = new reviewModel({
-      userName,
-      email,
-      text,
-    })
-    const save = await newReview.save()
-    return res.status(200).json(save)
+    if (email) {
+      if (!userName || !email || !userName)
+        return res.status(400).json({ message: 'Enter the values!' })
+  
+      const newReview = new reviewModel({
+        userName,
+        email,
+        text,
+      })
+      const save = await newReview.save()
+      return res.status(200).json({message: "Review added!"}, save)
+    }
+    return res.status(400).json({ error: 'You are not authorized!' })
   } catch (error) {
     console.log(error)
     return res.status(400).json({ error: 'Error' })

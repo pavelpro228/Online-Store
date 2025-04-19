@@ -4,8 +4,9 @@ import './styles/modal.css'
 
 const Modal = (props) => {
   const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
   const [review, setReview] = useState('')
+  
+  const email = localStorage.getItem('email')
 
   const closeModal = () => {
     props.setIsOpenedModal((isOpenedModal) => !isOpenedModal)
@@ -14,9 +15,6 @@ const Modal = (props) => {
   const handleNameChanged = (e) => {
     setName(e.target.value)
   }
-  const handleEmailChanged = (e) => {
-    setEmail(e.target.value)
-  }
   const handleReviewChanged = (e) => {
     setReview(e.target.value)
   }
@@ -24,7 +22,6 @@ const Modal = (props) => {
   const sendReview = async () => {
     try {
       const newReview = {
-        // id: props.reviewArr.length + props.reviewArrFromBackend.length + 1,
         userName: name,
         email: email,
         text: review,
@@ -36,8 +33,13 @@ const Modal = (props) => {
         },
         body: JSON.stringify(newReview)
       })
-      alert('Review added!')
-      window.location.href = '/reviews'
+      const data = await response.json()
+      if (data.message) {
+        alert(data.message)
+        window.location.href = '/reviews'
+      }
+      if (data.error)
+        alert(data.error)
     } catch (error) {
         console.log(error)
     }
@@ -71,17 +73,6 @@ const Modal = (props) => {
                     id="get-name"
                     value={name}
                     onChange={handleNameChanged}
-                    required
-                  ></input>
-                </div>
-                <div className="feedback-email">
-                  <p className="field-name">Your email:</p>
-                  <input
-                    type="email"
-                    name="email"
-                    id="get-email"
-                    value={email}
-                    onChange={handleEmailChanged}
                     required
                   ></input>
                 </div>
