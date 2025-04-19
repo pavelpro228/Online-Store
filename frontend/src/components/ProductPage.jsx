@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import {products} from './products'
 
 const ProductPage = () => {
   const [products, setProducts] = useState([])
@@ -16,15 +15,18 @@ const ProductPage = () => {
         getProducts().then((res) => setProducts(res))
     }, [])
 
-    const { id } = useParams()
+    const { name } = useParams()
     
-    const product = products.find(p => p.id === Number(id))
+    // const product = products.find(p => p.id === Number(id))
+    const product = products.find(p => p.name === name)
 
     if (!product)
-        return <p>Товар не найден</p>
+        return <p>Product not found</p>
   return (
     <div className='product-page'>
         {product.name}
+        <img src={product.image} alt="" />
+        {product.price}
     </div>
   )
 }

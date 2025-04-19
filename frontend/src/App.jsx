@@ -28,7 +28,7 @@ function App() {
           <Route path="/reviews" element={<Reviews />} />
           <Route path="/authorization" element={<Authorization />} />
           <Route path="/myInfo" element={<MyInfo />} />
-          <Route path="/product/:id" element={<ProductPage />} />
+          <Route path="/product/:name" element={<ProductPage />} />
         </Routes>
         <Footer />
       </Router>

@@ -19,9 +19,9 @@ const Card = (props) => {
     <div className='card'>
       <div style={{height: "100%"}}>
         <div style={{height: "65%", display: "flex", justifyContent: "center" , alignItems: "center"}}>
-          <img className='image' src={props.image} onClick={() => window.location.href = `/product/${props.id}`}/>
+          <img className='image' src={props.image} onClick={() => window.location.href = `/product/${props.name}`}/>
         </div>
-        <p className='product-name' onClick={() => window.location.href = `/product/${props.id}`}>{props.name}</p>
+        <p className='product-name' onClick={() => window.location.href = `/product/${props.name}`}>{props.name}</p>
         <div className='price-and-backet'>
           <strong className='price'>Price: {props.price} $</strong>
           <FaBasketShopping className='backet-icon' onClick={() => {
