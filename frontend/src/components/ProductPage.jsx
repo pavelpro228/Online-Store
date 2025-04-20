@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import AboutPC from './AboutPC'
+import './styles/ProductPage.css'
 
 const ProductPage = () => {
   const [products, setProducts] = useState([])
@@ -17,16 +19,18 @@ const ProductPage = () => {
 
     const { name } = useParams()
     
-    // const product = products.find(p => p.id === Number(id))
     const product = products.find(p => p.name === name)
 
     if (!product)
         return <p>Product not found</p>
   return (
     <div className='product-page'>
-        {product.name}
-        <img src={product.image} alt="" />
-        {product.price}
+      <AboutPC 
+        name={product.name}
+        image={product.image}
+        price={product.price}
+        description={product.description}
+      />
     </div>
   )
 }

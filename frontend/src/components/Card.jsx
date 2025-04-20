@@ -1,5 +1,8 @@
 import React from 'react';
 import { FaBasketShopping } from "react-icons/fa6";
+
+import { addProductToBasket } from '../methods/addProductToBasket';
+
 import "./styles/Products.css"
 
 const Card = (props) => {
@@ -11,10 +14,6 @@ const Card = (props) => {
       image: props.image
     }
   }
-
-  const addProduct = () => {
-    props.addProductToBasket(productInfo);
-  }
   return (
     <div className='card'>
       <div style={{height: "100%"}}>
@@ -24,9 +23,9 @@ const Card = (props) => {
         <p className='product-name' onClick={() => window.location.href = `/product/${props.name}`}>{props.name}</p>
         <div className='price-and-backet'>
           <strong className='price'>Price: {props.price} $</strong>
-          <FaBasketShopping className='backet-icon' onClick={() => {
-            addProduct();
-            props.addToTotal(productInfo.product.price);          
+          <FaBasketShopping className='basket-icon' onClick={() => {
+            addProductToBasket(productInfo)
+            // props.addToTotal(productInfo.product.price);          
           }}/>
         </div>
       </div>

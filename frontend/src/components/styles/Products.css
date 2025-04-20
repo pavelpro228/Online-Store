@@ -19,6 +19,7 @@
     justify-content: space-between;
     grid-template-columns: repeat(4, auto);
     grid-column-gap: 100px;
+    width: 70%;
 }
 .price-and-backet {
     width: 100%;
@@ -26,7 +27,7 @@
     justify-content: space-between;
 }
 .price,
-.backet-icon {
+.basket-icon {
     padding: 10px;
     display: flex;
     align-items: center;
@@ -34,11 +35,11 @@
 .price {
     font-size: 30px;
 }
-.backet-icon {
+.basket-icon {
     font-size: 40px;
     transition: 0.3s;
 }
-.backet-icon:hover {
+.basket-icon:hover {
     color: rgb(91, 91, 91);
 }
 .btn-open-backet {
