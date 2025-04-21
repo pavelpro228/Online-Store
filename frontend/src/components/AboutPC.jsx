@@ -1,17 +1,44 @@
-import React from 'react';
-import { IoClose } from "react-icons/io5";
+import React from 'react'
+import { FaBasketShopping } from "react-icons/fa6";
 
-const AboutPC = () => {
-    return (
-      <div className='about-PC'>
-        <div style={{width: '100%'}}>
-          <IoClose className='icon-close' onClick={this.props.showMainContent}/>
+import { addProductToBasket } from '../methods/addProductToBasket'
+
+const AboutPC = (props) => {
+  const productInfo = {
+    email: localStorage.getItem('email'),
+    product: {
+      name: props.name,
+      price: props.price,
+      image: props.image
+    }
+  }
+  
+  return (
+    <div>
+      <h1 style={{marginBottom: "80px"}}>{props.name}</h1>
+      <div style={{display: "flex"}}>
+        <div style={{width: "50%", display: "flex", justifyContent: "center"}}>
+          <div style={{width: "50%", borderRadius: "15px", backgroundColor: "white", display: "flex", justifyContent: "center"}}>
+            <img style={{width: "80%"}} src={props.image} alt=""/>
+          </div>
         </div>
-        <div className='main-image-computer'>
-          <img style={{width: '100%'}} src={this.props.image}></img>
+        <div style={{width: "50%", display: "flex", alignItems: "center"}}>
+          <div>
+            <div style={{marginBottom: "20px"}}>
+              <span className='product-option'>{props.description}</span>
+            </div>
+            <div>
+              <strong className='product-option'>Price: {props.price} $</strong>
+            </div>
+            <FaBasketShopping className='basket-icon' onClick={() => {
+              addProductToBasket(productInfo)
+              // props.addToTotal(productInfo.product.price);          
+            }}/>
+          </div>
         </div>
       </div>
-    );
+    </div>
+  )
 }
 
-export default AboutPC;
+export default AboutPC

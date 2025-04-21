@@ -182,54 +182,72 @@ app.get('/api/products', (req, res) => {
       name: 'Computer ARTLINE Gaming X63',
       image: '/images/ARTLINE Gaming X63.png',
       price: 770,
+      description: "Computer 1"
+
     },
     {
       id: 2,
       name: 'Computer ARTLINE WorkStation W53',
       image: '/images/ARTLINE WorkStation W53.png',
       price: 580,
+      description: "Computer 2"
+
     },
     {
       id: 3,
       name: 'Computer ARTLINE Gaming X39',
       image: '/images/ARTLINE Gaming X39.png',
       price: 780,
+      description: "Computer 3"
+
     },
     {
       id: 4,
       name: 'Gaming keyboard 2E-KG315-GAMING_-Black',
       image: '/images/2E-KG315-GAMING_-Black.png',
       price: 22,
+      description: "Computer 4"
+
     },
     {
       id: 5,
       name: 'Gaming keyboard GamePro-Headshot-GK398-USB',
       image: '/images/GamePro-Headshot-GK398-USB.png',
       price: 15,
+      description: "Computer 5"
+
     },
     {
       id: 6,
       name: 'Gaming keyboard RAZER-Ornata-V3-X_-UKR',
       image: '/images/RAZER-Ornata-V3-X_-UKR.png',
       price: 58,
+      description: "Computer 6"
+
     },
     {
       id: 7,
       name: 'Gaming mouse Esperanza-MX205-FIGHTER-Green',
       image: '/images/Esperanza-MX205-FIGHTER-Green.png',
       price: 10,
+      description: "Computer 7"
+
     },
     {
       id: 8,
       name: 'Gaming mouse Logitech-G102-Lightsync-Black',
       image: '/images/Logitech-G102-Lightsync-Black.png',
       price: 44,
+      description: "Computer 8"
+
     },
     {
       id: 9,
       name: 'Gaming mouse Razer-DeathAdder-Essential-Black',
       image: '/images/Razer-DeathAdder-Essential-Black.png',
       price: 34,
+      description: "Computer 9"
+
     },
   ])
 })
