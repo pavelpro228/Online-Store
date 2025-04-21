@@ -30,10 +30,7 @@ const ProductPage = () => {
         image={product.image}
         price={product.price}
         description={product.description}
-<<<<<<< HEAD
-=======
         specs={product.specs}
->>>>>>> 690ef5f (fixed bugs and added comp specs)
       />
     </div>
   )
