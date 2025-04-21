@@ -1,10 +1,9 @@
 import React from 'react'
 import { FaBasketShopping } from "react-icons/fa6";
 
-import { addProductToBasket } from '../methods/addProductToBasket'
-
 import Specs from './Specs';
 import { addProductToBasket } from '../methods/addProductToBasket'
+
 
 const AboutPC = (props) => {
   const productInfo = {
@@ -27,16 +26,6 @@ const AboutPC = (props) => {
         </div>
         <div style={{width: "50%", display: "flex", alignItems: "center"}}>
           <div>
-            <div style={{marginBottom: "20px"}}>
-              <span className='product-option'>{props.description}</span>
-            </div>
-            <div>
-              <strong className='product-option'>Price: {props.price} $</strong>
-            </div>
-            <FaBasketShopping className='basket-icon' onClick={() => {
-              addProductToBasket(productInfo)
-              // props.addToTotal(productInfo.product.price);          
-            }}/>
             <Specs specs={props.specs}/>
             <div style={{display: "flex"}}>
               <strong className='product-option'>Price: {props.price} $</strong>
