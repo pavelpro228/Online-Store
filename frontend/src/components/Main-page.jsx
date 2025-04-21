@@ -45,6 +45,7 @@ const Content = () => {
   const openModalBasket = () => {
     setIsOpenedModalBasket((isOpenedModalBasket) => !isOpenedModalBasket)
   }
+  
   const deleteProductFromBacket = (product) => {
     const tempProducts = [...productsInBasket]
     tempProducts.splice(product, 1)
