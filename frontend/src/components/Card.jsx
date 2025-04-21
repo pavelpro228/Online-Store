@@ -5,6 +5,8 @@ import { addProductToBasket } from '../methods/addProductToBasket';
 
 import "./styles/Products.css"
 
+import { addProductToBasket } from '../methods/addProductToBasket';
+
 const Card = (props) => {
   const productInfo = {
     email: localStorage.getItem('email'),
@@ -24,8 +26,13 @@ const Card = (props) => {
         <div className='price-and-backet'>
           <strong className='price'>Price: {props.price} $</strong>
           <FaBasketShopping className='basket-icon' onClick={() => {
+<<<<<<< HEAD
             addProductToBasket(productInfo)
             // props.addToTotal(productInfo.product.price);          
+=======
+            addProductToBasket(productInfo);
+            props.addToTotal(productInfo.product.price);          
+>>>>>>> 690ef5f (fixed bugs and added comp specs)
           }}/>
         </div>
       </div>

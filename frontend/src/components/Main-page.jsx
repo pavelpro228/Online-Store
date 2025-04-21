@@ -46,6 +46,7 @@ const Content = () => {
     setIsOpenedModalBasket((isOpenedModalBasket) => !isOpenedModalBasket)
   }
 
+<<<<<<< HEAD
   // const addProductToBasket = async (product) => {
   //   try {
   //       const response = await fetch('/api/baskets', {
@@ -69,6 +70,8 @@ const Content = () => {
   //   // localStorage.setItem("productInBasket", JSON.stringify(temp));
   // }
 
+=======
+>>>>>>> 690ef5f (fixed bugs and added comp specs)
   const deleteProductFromBacket = (product) => {
     const tempProducts = [...productsInBasket]
     tempProducts.splice(product, 1)
@@ -144,6 +147,7 @@ const Content = () => {
             : null}
         </ul>
       </div>
+<<<<<<< HEAD
       {/* <div style={{width: "100%", display: "flex", justifyContent: "center"}}> */}
         <div className="products">
           {filteredProducts.length > 0 ? (
@@ -163,6 +167,24 @@ const Content = () => {
 
         </div>
       {/* </div> */}
+=======
+      <div className="products">
+        {filteredProducts.length > 0 ? (
+          filteredProducts.map((item) => (
+            <Card
+              key={item.id}
+              id={item.id}
+              name={item.name}
+              image={item.image}
+              price={item.price}
+              addToTotal={addToTotal}
+            />
+          ))
+        ) : (
+          <div className="preloader"></div>
+        )}
+      </div>
+>>>>>>> 690ef5f (fixed bugs and added comp specs)
       {isOpenedModalBasket && (
         <ModalBasket
           setIsOpenedModal={setIsOpenedModalBasket}
