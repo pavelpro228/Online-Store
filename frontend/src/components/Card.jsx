@@ -5,8 +5,6 @@ import { addProductToBasket } from '../methods/addProductToBasket';
 
 import "./styles/Products.css"
 
-import { addProductToBasket } from '../methods/addProductToBasket';
-
 const Card = (props) => {
   const productInfo = {
     email: localStorage.getItem('email'),
