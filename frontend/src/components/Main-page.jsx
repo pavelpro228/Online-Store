@@ -6,8 +6,10 @@ import Card from './Card'
 import ModalBasket from './ModalBasket'
 
 import './styles/AutoComplete.css'
+// import Carousel from './Carousel'
 
 const Content = () => {
+  
   const [products, setProducts] = useState([])
   const [productsInBasket, setProductsInBasket] = useState([])
 
@@ -104,6 +106,7 @@ const Content = () => {
 
   return (
     <div className="content-main-page">
+      {/* <Carousel /> */}
       <div style={{ display: 'flex', width: '100%' }}>
         <div style={{ width: '20%' }}></div>
         <div style={{ width: '60%' }}>

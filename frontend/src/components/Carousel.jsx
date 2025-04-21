@@ -1,30 +1,55 @@
-import React from "react";
-// import 'bootstrap/dist/css/bootstrap.min.css';
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
+import './Styles/Carousel.css' // Подключаем стили
 
-const Carousel = () => {
-    return (
-        <div id="carouselExampleRide" class="carousel slide" data-bs-ride="true">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src={null}></img>
-            </div>
-            <div class="carousel-item">
-                <img src={null}></img>
-            </div>
-            <div class="carousel-item">
-                <img src={null}></img>
-            </div>
-        </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-    )
+const image = './components/images/facebook-logo'
+
+export default function Carousel() {
+  const [products, setProducts] = useState([])
+  const [index, setIndex] = useState(0)
+
+  const nextSlide = () => setIndex((prev) => (prev + 1) % image.length)
+  const prevSlide = () =>
+    setIndex((prev) => (prev - 1 + image.length) % image.length)
+
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 5000)
+    return () => clearInterval(interval)
+  }, [])
+
+  const getProducts = async () => {
+    const response = await fetch('/api/products')
+    const body = await response.json()
+
+    return body
+  }
+
+  useEffect(() => {
+    getProducts().then((res) => setProducts(res))
+  }, [])
+
+  return (
+    <div className="carousel-container">
+      <div>
+        <img src={image} alt="" className="carousel-image" />
+      </div>
+
+      <button className="carousel-button left" onClick={prevSlide}>
+        <ChevronLeft />
+      </button>
+      <button className="carousel-button right" onClick={nextSlide}>
+        <ChevronRight />
+      </button>
+
+      {/* <div className="carousel-indicators">
+        {images.map((_, i) => (
+          <div
+            key={i}
+            className={`indicator ${i === index ? "active" : ""}`}
+          />
+        ))}
+      </div> */}
+    </div>
+  )
 }
-
-export default Carousel;
