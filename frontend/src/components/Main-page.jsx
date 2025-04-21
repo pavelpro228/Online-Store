@@ -147,22 +147,25 @@ const Content = () => {
             : null}
         </ul>
       </div>
-      <div className="products">
-        {filteredProducts.length > 0 ? (
-          filteredProducts.map((item) => (
-            <Card
-              key={item.id}
-              id={item.id}
-              name={item.name}
-              image={item.image}
-              price={item.price}
-              addToTotal={addToTotal}
-            />
-          ))
-        ) : (
-          <div className="preloader"></div>
-        )}
-      </div>
+      {/* <div style={{width: "100%", display: "flex", justifyContent: "center"}}> */}
+        <div className="products">
+          {filteredProducts.length > 0 ? (
+            filteredProducts.map((item) => (
+              <Card
+                key={item.id}
+                id={item.id}
+                name={item.name}
+                image={item.image}
+                price={item.price}
+                addToTotal={addToTotal}
+              />
+            ))
+          ) : (
+            <div className="preloader"></div>
+          )}
+
+        </div>
+      {/* </div> */}
       {isOpenedModalBasket && (
         <ModalBasket
           setIsOpenedModal={setIsOpenedModalBasket}
