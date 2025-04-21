@@ -89,10 +89,6 @@
     animation: spin 600ms infinite linear;
 }
 
-
-
-
-
 @media(max-width: 1900px) {
     .products {
         grid-template-columns: repeat(3, auto);
