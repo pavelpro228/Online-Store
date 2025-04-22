@@ -182,72 +182,129 @@ app.get('/api/products', (req, res) => {
       name: 'Computer ARTLINE Gaming X63',
       image: '/images/ARTLINE Gaming X63.png',
       price: 770,
-      description: "Computer 1"
-
+      specs: {
+        type: 'Computer',
+        processor: 'Intel Core i5-12400F',
+        graphicsCard: 'NVIDIA GeForce GTX 1660 Super 6GB',
+        ram: '16GB DDR4',
+        storage: '512GB SSD',
+        operatingSystem: 'Windows 11 Home'
+      }
     },
     {
       id: 2,
       name: 'Computer ARTLINE WorkStation W53',
       image: '/images/ARTLINE WorkStation W53.png',
       price: 580,
-      description: "Computer 2"
-
+      specs: {
+        type: 'Computer',
+        processor: 'AMD Ryzen 5 5600G',
+        graphicsCard: 'Integrated Radeon Graphics',
+        ram: '16GB DDR4',
+        storage: '1TB HDD + 256GB SSD',
+        operatingSystem: 'Windows 10 Pro'
+      }
     },
     {
       id: 3,
       name: 'Computer ARTLINE Gaming X39',
       image: '/images/ARTLINE Gaming X39.png',
       price: 780,
-      description: "Computer 3"
-
+      specs: {
+        type: 'Computer',
+        processor: 'Intel Core i5-12400F',
+        graphicsCard: 'NVIDIA GeForce RTX 3050 8GB',
+        ram: '16GB DDR4',
+        storage: '1TB SSD',
+        operatingSystem: 'Windows 11 Home'
+      }
     },
     {
       id: 4,
       name: 'Gaming keyboard 2E-KG315-GAMING_-Black',
       image: '/images/2E-KG315-GAMING_-Black.png',
       price: 22,
-      description: "Computer 4"
-
+      specs: {
+        type: 'Keyboard',
+        connection: 'Wired USB',
+        switchType: 'Membrane',
+        backlight: 'Rainbow LED',
+        layout: 'Ukrainian/English',
+        keyRollover: '19-Key Anti-Ghosting',
+        wristRest: ''
+      }
     },
     {
       id: 5,
       name: 'Gaming keyboard GamePro-Headshot-GK398-USB',
       image: '/images/GamePro-Headshot-GK398-USB.png',
       price: 15,
-      description: "Computer 5"
-
+      specs: {
+        type: 'Keyboard',
+        connection: 'Wired USB',
+        switchType: 'Membrane',
+        backlight: 'RGB',
+        layout: 'English',
+        keyRollover: '',
+        wristRest: ''
+      }
     },
     {
       id: 6,
       name: 'Gaming keyboard RAZER-Ornata-V3-X_-UKR',
       image: '/images/RAZER-Ornata-V3-X_-UKR.png',
       price: 58,
-      description: "Computer 6"
-
+      specs: {
+        type: 'Keyboard',
+        connection: 'Wired USB',
+        switchType: 'Mecha-Membrane',
+        backlight: 'Single-zone RGB',
+        layout: 'Ukrainian/English',
+        keyRollover: '',
+        wristRest: 'Detachable'
+      }
     },
     {
       id: 7,
       name: 'Gaming mouse Esperanza-MX205-FIGHTER-Green',
       image: '/images/Esperanza-MX205-FIGHTER-Green.png',
       price: 10,
-      description: "Computer 7"
-
+      specs: {
+        type: 'Mouse',
+        connection: 'Wired USB',
+        dpi: '800 / 1200 / 1600',
+        buttons: '6',
+        lighting: 'Green LED',
+        sensorType: 'Optical'
+      }
     },
     {
       id: 8,
       name: 'Gaming mouse Logitech-G102-Lightsync-Black',
       image: '/images/Logitech-G102-Lightsync-Black.png',
       price: 44,
-      description: "Computer 8"
-
+      specs: {
+        type: 'Mouse',
+        connection: 'Wired USB',
+        dpi: '200 – 8000',
+        buttons: '6 Programmable',
+        lighting: 'RGB Lightsync',
+        sensorType: 'Gaming-grade Optical'
+      }
     },
     {
       id: 9,
       name: 'Gaming mouse Razer-DeathAdder-Essential-Black',
       image: '/images/Razer-DeathAdder-Essential-Black.png',
       price: 34,
-      description: "Computer 9"
-
+      specs: {
+        type: 'Mouse',
+        connection: 'Wired USB',
+        dpi: '6400',
+        buttons: '5 Programmable',
+        lighting: 'Green Backlight',
+        sensorType: 'Optical'
+      }
     },
   ])
 })

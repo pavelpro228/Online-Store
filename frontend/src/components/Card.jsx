@@ -25,7 +25,7 @@ const Card = (props) => {
           <strong className='price'>Price: {props.price} $</strong>
           <FaBasketShopping className='basket-icon' onClick={() => {
             addProductToBasket(productInfo)
-            // props.addToTotal(productInfo.product.price);          
+            // props.addToTotal(productInfo.product.price);
           }}/>
         </div>
       </div>

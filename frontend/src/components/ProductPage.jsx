@@ -30,6 +30,7 @@ const ProductPage = () => {
         image={product.image}
         price={product.price}
         description={product.description}
+        specs={product.specs}
       />
     </div>
   )
