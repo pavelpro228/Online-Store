@@ -305,14 +305,6 @@ app.get('/api/products', (req, res) => {
         lighting: 'Green Backlight',
         sensorType: 'Optical'
       }
-<<<<<<< HEAD
-<<<<<<< HEAD
     },
-=======
-    }
->>>>>>> 690ef5f (fixed bugs and added comp specs)
-=======
-    }
->>>>>>> 690ef5f (fixed bugs and added comp specs)
   ])
 })
