@@ -5,7 +5,6 @@ import './styles/Reviews.css'
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([])
-  const [reviewArrFromBackend, setReviewArrFromBackend] = useState([])
   const [reviewArr, setReviewArr] = useState(
     JSON.parse(localStorage.getItem('reviews')) || []
   )
@@ -14,6 +13,8 @@ const Reviews = () => {
   const getReviews = async () => {
     const response = await fetch('/api/reviews')
     const body = await response.json()
+
+    console.log(body)
     return body
   }
 
@@ -27,17 +28,17 @@ const Reviews = () => {
 
   const deleteReview = async (id) => {
     if (window.confirm('Are you sure?')) {
-      console.log(id)
-
       try {
         const response = await fetch('/api/delete-review', {
           method: 'DELETE',
           headers: {
             'Content-type': 'application/json',
           },
-          body: JSON.stringify({ id: id }),
+          body: JSON.stringify({ id: id, email: localStorage.getItem('email') }),
+          
         })
-        window.location.href = '/reviews'
+        setReviews(prev => prev.filter(r => r._id !== id));
+        
       } catch (error) {
         console.log(error)
       }
@@ -57,25 +58,27 @@ const Reviews = () => {
           </button>
         </div>
       </div>
-      <div>
-        {reviews.length > 0 ? (
-          reviews.map((review, index) => (
-            <Review
-              key={review._id}
-              dataName={review.userName}
-              reviewText={review.text}
-              deleteReview={() => deleteReview(review._id)}
-            />
-          ))
-        ) : (
-          <p className="review-component-loading">Loading...</p>
-        )}
+      <div style={{display: "flex", justifyContent: "center"}}>
+        <div>
+          {reviews.length > 0 ? (
+            reviews.map((review, index) => (
+              <Review
+                key={review._id}
+                dataName={review.userName}
+                reviewText={review.text}
+                email={review.email}
+                deleteReview={() => deleteReview(review._id)}
+              />
+            ))
+          ) : (
+            <p className="review-component-loading">Loading...</p>
+          )}
+        </div>
       </div>
       {isOpenedModal && (
         <Modal
           isOpenedModal={isOpenedModal}
           reviewArr={reviewArr}
-          reviewArrFromBackend={reviewArrFromBackend}
           setIsOpenedModal={setIsOpenedModal}
         />
       )}
