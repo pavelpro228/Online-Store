@@ -1,0 +1,37 @@
+.about-pc-content {
+    display: flex;
+}
+.image-block {
+    width: 50%;
+}
+.specs-block {
+    width: 50%;
+    display: flex; 
+    align-items: center;
+}
+
+@media(max-width: 1000px) {
+    .specs-block {
+        justify-content: center;
+        text-align: center;
+    }
+    .price-block {
+        display: flex; 
+        justify-content: center
+    }
+}
+
+@media(max-width: 830px) {
+    .about-pc-content {
+        display: block;
+    }
+    .image-block {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .specs-block {
+        width: 100%;
+        justify-content: center;
+    }
+}

@@ -18,7 +18,7 @@
     display: grid;
     justify-content: space-between;
     grid-template-columns: repeat(4, auto);
-    grid-column-gap: 100px;
+    /* grid-column-gap: 100px; */
 }
 .price-and-backet {
     width: 100%;

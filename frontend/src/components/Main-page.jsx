@@ -124,7 +124,7 @@ const Content = () => {
             : null}
         </ul>
       </div>
-      {/* <div style={{width: "100%", display: "flex", justifyContent: "center"}}> */}
+      <div style={{display: "flex", justifyContent: "center"}}>
         <div className="products">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((item) => (
@@ -140,9 +140,8 @@ const Content = () => {
           ) : (
             <div className="preloader"></div>
           )}
-
         </div>
-      {/* </div> */}
+      </div>
       {isOpenedModalBasket && (
         <ModalBasket
           setIsOpenedModal={setIsOpenedModalBasket}
