@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useMemo } from 'react'
 import './styles/Basket.css'
 import PreorderedProduct from './PreorderedProduct'
 import { MdClose } from 'react-icons/md'
-import { deleteProductFromBasket } from '../methods/deleteProductsFromBasket'
 
 const Basket = (props) => {
+  const totalPrice = useMemo(() => {
+    return props.productsInBasket.reduce((sum, p) => sum + p.product.price, 0)
+  }, [props.productsInBasket])
+
   const closeModal = () => {
     props.setIsOpenedModal((isOpenedModal) => !isOpenedModal)
   }
@@ -19,8 +22,6 @@ const Basket = (props) => {
     })
     const data = await response.json()
     props.setProductsInBasket(data)
-
-    return data
   }
 
   useEffect(() => {
@@ -39,6 +40,7 @@ const Basket = (props) => {
       const data = await response.json()
       alert(data.message)
       props.setProductsInBasket(prev => prev.filter(p => p._id !== id))
+      
     } catch (error) {
       console.log(error)
     }
@@ -70,7 +72,7 @@ const Basket = (props) => {
             )}
             {props.productsInBasket.length > 0 && (
               <div style={{ marginTop: '30px' }}>
-                <strong>Total price: {props.totalPrice} $</strong>
+                <strong>Total price: {totalPrice} $</strong>
                 <div style={{ textAlign: 'center' }}>
                   <button className="order-product">Order a products</button>
                 </div>
