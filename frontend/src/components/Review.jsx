@@ -14,9 +14,9 @@ const Review = (props) => {
           <span className='title-data'>Review:</span> <span className='data-info'>{props.reviewText}</span>
           </p>
         </div>
-        <div style={{textAlign: "right"}}>
+        {props.email === localStorage.getItem('email') && <div style={{textAlign: "right"}}>
           <IoTrashBinSharp onClick={props.deleteReview} className='delete-review'/>
-        </div>
+        </div>}
       </div>
     </div>
   );

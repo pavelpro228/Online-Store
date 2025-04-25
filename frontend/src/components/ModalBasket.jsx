@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './styles/Basket.css'
 import PreorderedProduct from './PreorderedProduct'
 import { MdClose } from 'react-icons/md'
+import { deleteProductFromBasket } from '../methods/deleteProductsFromBasket'
 
 const Basket = (props) => {
   const closeModal = () => {
@@ -27,20 +28,6 @@ const Basket = (props) => {
   }, [])
 
   const deleteProductFromBasket = async (id) => {
-    // const tempProducts = [...props.productsInBasket]
-    // tempProducts.splice(product, 1)
-    // props.setProductsInBasket(tempProducts)
-    // localStorage.setItem('productInBasket', JSON.stringify(tempProducts))
-
-    // totalPriceArr.splice(product, 1)
-    // localStorage.setItem('totalArr', JSON.stringify(totalPriceArr))
-
-    // let total = 0
-    // for (let i = 0; i < totalPriceArr.length; i++) {
-    //   total += totalPriceArr[i]
-    // }
-    // setTotalPrice(total)
-    // localStorage.setItem('totalPrice', JSON.stringify(total))
     try {
       const response = await fetch('/api/delete-products-from-basket', {
         method: 'DELETE',
@@ -51,6 +38,7 @@ const Basket = (props) => {
       })
       const data = await response.json()
       alert(data.message)
+      props.setProductsInBasket(prev => prev.filter(p => p._id !== id))
     } catch (error) {
       console.log(error)
     }

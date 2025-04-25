@@ -18,7 +18,7 @@ app.post('/api/add-review', async (req, res) => {
     const { userName, email, text } = req.body
 
     if (email) {
-      if (!userName || !email || !userName)
+      if (!userName || !email)
         return res.status(400).json({ message: 'Enter the values!' })
   
       const newReview = new reviewModel({
@@ -38,18 +38,29 @@ app.post('/api/add-review', async (req, res) => {
 
 app.delete('/api/delete-review', async (req, res) => {
   try {
-    const { id } = req.body
+    const { id, email } = req.body
+    if (!email) 
+      return res.status(400).json({ error: 'You are not authorized!' })
+    
     const deletedReview = await reviewModel.findByIdAndDelete(id)
+
     return res.status(200).json({ message: 'Review deleted!' })
   } catch (error) {
     console.log(error)
-    return res.status(400).json({ error: 'Error' })
+    if (!res.headersSent) {
+      return res.status(500).json({ error: 'Server error' });
+    }
   }
 })
+
+
 
 app.get('/api/reviews', async (req, res) => {
   const reviews = await reviewModel.find()
   res.json(reviews)
+  // return res.json({emails: reviews.email})
+
+  return res.json({ message: 'Review got!' })
 })
 
 app.post('/api/registration', async (req, res) => {

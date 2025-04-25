@@ -44,9 +44,9 @@ const Modal = (props) => {
         console.log(error)
     }
 
-    console.log(newReview)
+    // console.log(newReview)
 
-    props.addNewReview(newReview)
+    // props.addNewReview(newReview)
   }
 
   return (
