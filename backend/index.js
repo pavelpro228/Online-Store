@@ -53,14 +53,9 @@ app.delete('/api/delete-review', async (req, res) => {
   }
 })
 
-
-
 app.get('/api/reviews', async (req, res) => {
   const reviews = await reviewModel.find()
   res.json(reviews)
-  // return res.json({emails: reviews.email})
-
-  return res.json({ message: 'Review got!' })
 })
 
 app.post('/api/registration', async (req, res) => {
