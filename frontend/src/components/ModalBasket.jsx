@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useMemo } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import './styles/Basket.css'
 import PreorderedProduct from './PreorderedProduct'
 import { MdClose } from 'react-icons/md'

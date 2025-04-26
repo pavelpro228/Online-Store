@@ -11,7 +11,8 @@ const Card = (props) => {
     product: {
       name: props.name,
       price: props.price,
-      image: props.image
+      image: props.image,
+      count: 1
     }
   }
   return (

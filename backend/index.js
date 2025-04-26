@@ -143,13 +143,21 @@ app.post('/api/baskets', async (req, res) => {
     const { email, product } = req.body
 
     if (email) {
-      const newBasket = new basketModel({
-        email,
-        product,
-      })
-  
-      const save = await newBasket.save()
-      return res.status(200).json({ message: 'Product added to basket!' }, save)
+      const candidate = await basketModel.findOne({email: email, product: product})
+      if (!candidate) {
+        const newBasket = new basketModel({
+          email,
+          product,
+        })
+    
+        const save = await newBasket.save()
+        return res.status(200).json({ message: 'New product added to basket!' }, save)
+      }
+      const count = product.count + 1
+      const updatedCount = await basketModel.findOneAndUpdate(
+        {email: email, 'product.name': product.name}, {'product.count': count}
+      )
+      return res.status(200).json({ message: 'Product added to basket!' }, updatedCount)
     }
     return res.status(400).json({ error: 'You are not authorized!' })
   } catch (error) {
@@ -181,6 +189,7 @@ app.delete('/api/delete-products-from-basket', async (req, res) => {
 })
 
 const path = require('path')
+const { count } = require('console')
 app.use('/images', express.static(path.join(__dirname, 'images')))
 
 app.get('/api/products', (req, res) => {
