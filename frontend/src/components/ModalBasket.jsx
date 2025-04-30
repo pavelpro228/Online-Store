@@ -5,7 +5,7 @@ import { MdClose } from 'react-icons/md'
 
 const Basket = (props) => {
   const totalPrice = useMemo(() => {
-    return props.productsInBasket.reduce((sum, p) => sum + p.product.price, 0)
+    return props.productsInBasket.reduce((sum, p) => sum + p.product.price * p.count, 0)
   }, [props.productsInBasket])
 
   const closeModal = () => {
@@ -40,7 +40,44 @@ const Basket = (props) => {
       const data = await response.json()
       alert(data.message)
       props.setProductsInBasket(prev => prev.filter(p => p._id !== id))
-      
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const addCount = async (product) => {
+    try {
+      const response = await fetch('/api/add-count', {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify({ 
+          product: product, 
+          email: localStorage.getItem('email') 
+        }),
+      })
+      const data = await response.json()
+      await getProducts()
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const subCount = async (product) => {
+    try {
+      const response = await fetch('/api/sub-count', {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify({ 
+          product: product, 
+          email: localStorage.getItem('email') 
+        }),
+      })
+      const data = await response.json()
+      await getProducts()
     } catch (error) {
       console.log(error)
     }
@@ -59,15 +96,20 @@ const Basket = (props) => {
               <p className="warning">You don't have any product!</p>
             ) : (
               props.productsInBasket.map((item, index) => (
-                <PreorderedProduct
-                  key={index}
-                  name={item.product.name}
-                  price={item.product.price}
-                  image={item.product.image}
-                  deleteProductFromBasket={() =>
-                    deleteProductFromBasket(item._id)
-                  }
-                />
+                <div key={index} style={{display: "flex", alignItems: "center"}}>
+                  <PreorderedProduct
+                    key={index}
+                    name={item.product.name}
+                    price={item.product.price}
+                    image={item.product.image}
+                    count={item.count}
+                    deleteProductFromBasket={() =>
+                      deleteProductFromBasket(item._id)
+                    } 
+                    addCount={() => {addCount(item.product)}}
+                    subCount={() => {subCount(item.product)}}
+                  />
+                </div>
               ))
             )}
             {props.productsInBasket.length > 0 && (

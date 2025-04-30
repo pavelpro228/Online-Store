@@ -12,3 +12,16 @@
     font-weight: bold;
     color: rgb(66, 66, 66);
 }
+.add-count-product,
+.sub-count-product {
+    padding: 20px;
+    height: 30px;
+    font-size: 50px;
+    display: flex;
+    align-items: center;
+}
+.add-count-product:hover,
+.sub-count-product:hover {
+    cursor: pointer;
+    color: rgb(53, 53, 53);
+}

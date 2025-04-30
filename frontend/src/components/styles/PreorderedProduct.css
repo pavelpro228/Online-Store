@@ -27,6 +27,10 @@
 .product-name-value-in-basket {
     font-size: 30px;
 }
+.count-title {
+    font-size: 30px;
+    font-weight: bold;
+}
 .price-basket {
     font-size: 30px;
 }

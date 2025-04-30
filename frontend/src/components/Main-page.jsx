@@ -9,9 +9,9 @@ import './styles/AutoComplete.css'
 // import Carousel from './Carousel'
 
 const Content = () => {
-  
   const [products, setProducts] = useState([])
   const [productsInBasket, setProductsInBasket] = useState([])
+  const [countProducts, setCountProducts] = useState(1)
 
   const [value, setValue] = useState('')
   const [isOpened, setIsOpened] = useState(true)
@@ -134,6 +134,8 @@ const Content = () => {
                 name={item.name}
                 image={item.image}
                 price={item.price}
+                setCountProducts={setCountProducts}
+                // count={countProducts}
                 addToTotal={addToTotal}
               />
             ))
@@ -149,6 +151,7 @@ const Content = () => {
           setProductsInBasket={setProductsInBasket}
           // deleteProductFromBacket={deleteProductFromBacket}
           totalPrice={totalPrice}
+          countProducts={countProducts}
           setTotalPrice={setTotalPrice}
         />
       )}

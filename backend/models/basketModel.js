@@ -6,8 +6,8 @@ const basketSchema = new mongoose.Schema({
     name: String,
     price: Number,
     image: String,
-    count: Number
   },
+  count: Number
 }, {versionKey: false})
 
 const basketModel = mongoose.model('baskets', basketSchema)

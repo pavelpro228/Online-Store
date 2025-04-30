@@ -12,8 +12,7 @@ const Card = (props) => {
       name: props.name,
       price: props.price,
       image: props.image,
-      count: 1
-    }
+    },
   }
   return (
     <div className='card'>
@@ -25,8 +24,7 @@ const Card = (props) => {
         <div className='price-and-backet'>
           <strong className='price'>Price: {props.price} $</strong>
           <FaBasketShopping className='basket-icon' onClick={() => {
-            addProductToBasket(productInfo)
-            // props.addToTotal(productInfo.product.price);
+            addProductToBasket(productInfo, props.setCountProducts)
           }}/>
         </div>
       </div>
