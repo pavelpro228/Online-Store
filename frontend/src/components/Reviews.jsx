@@ -5,9 +5,6 @@ import './styles/Reviews.css'
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([])
-  const [reviewArr, setReviewArr] = useState(
-    JSON.parse(localStorage.getItem('reviews')) || []
-  )
   const [isOpenedModal, setIsOpenedModal] = useState(false)
 
   const getReviews = async () => {
@@ -71,14 +68,13 @@ const Reviews = () => {
               />
             ))
           ) : (
-            <p className="review-component-loading">Завантаження...</p>
+            <div className="preloader"></div>
           )}
         </div>
       </div>
       {isOpenedModal && (
         <ModalReview
           isOpenedModal={isOpenedModal}
-          reviewArr={reviewArr}
           setIsOpenedModal={setIsOpenedModal}
           getReviews={getReviews}
         />

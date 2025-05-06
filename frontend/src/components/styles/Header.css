@@ -43,11 +43,13 @@ img {
 }
 .header-list {
     display: flex;
+    justify-content: right;
     width: 33%;
     text-align: center;
 }
 .header-list ul {
     display: flex;
+    justify-content: center;
     list-style: none;
 }
 .header-list li a {
@@ -66,7 +68,7 @@ img {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* width: 500px; */
+    width: 15%;
 }
 .user-button-icon {
     color: white;
@@ -106,15 +108,10 @@ img {
 .burgermenu {
     display: none;
 }
-@media(max-width: 865px) {
-    .shop-info {
-        display: none;
-    }
-    .store-name {
-        width: 67%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+
+@media(max-width: 1530px) {
+    .header-list li a {
+        font-size: 17px;
     }
 }
 @media(max-width: 1370px) {
@@ -149,6 +146,17 @@ img {
 @media(max-width: 900px) {
     .store-name p {
         font-size: 30px;
+    }
+}
+@media(max-width: 865px) {
+    .shop-info {
+        display: none;
+    }
+    .store-name {
+        width: 67%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
 @media(max-width: 850px) {
