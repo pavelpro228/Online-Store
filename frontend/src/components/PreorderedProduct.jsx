@@ -11,12 +11,12 @@ const PreorderedProduct = (props) => {
                 </div>
                 <div className="pre-ordered-product">
                     <div style={{display: "flex"}}>
-                        <p className="product-name-in-basket">Name: </p>
+                        <p className="product-name-in-basket">Назва: </p>
                         <p className="product-name-value-in-basket"> {props.name}</p>
                     </div>
-                    <p className="count-title">Count: {props.count}</p>
+                    <p className="count-title">Кількість: {props.count}</p>
                     <div style={{display: "flex", justifyContent: "space-between"}}>
-                        <strong className="price-basket">Price: {props.price} $</strong>
+                        <strong className="price-basket">Ціна: {props.price} $</strong>
                         <IoTrashBinSharp className="delete-product-from-basket" onClick={props.deleteProductFromBasket}/>
                     </div>
                 </div>

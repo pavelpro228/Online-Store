@@ -41,10 +41,10 @@ const About = () => (
   <section className="content">
     <div className="text-about">
       <p>
-          This site will help you find the right computer for you.
-          For example, for video games or other heavy programs.<br/> <br/>
-          The employees treat the client’s wishes very competently and 
-          help to select the product to meet the desired requirements.
+          Цей сайт допоможе вам знайти правильний комп’ютер для вас.
+          Наприклад, для відеоігор або інших важких програм.<br/>
+          Працівники дуже грамотно ставляться до побажань клієнта 
+          допомогти підібрати товар відповідно до бажаних вимог.
       </p>
     </div>
 

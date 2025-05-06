@@ -11,12 +11,12 @@ const ModalLanguage = (props) => {
                         <div className="modal">
                             <form>
                                 <div style={{display: 'flex', marginBottom: "40px"}}>
-                                    <p className='review-title'>Choose language</p>
+                                    <p className='review-title'>Обрати мову</p>
                                     <MdClose className='btn-close' onClick={closeModal}/>
                                 </div>
                                 <ul className="select-language">
                                     {/* Links */}
-                                    <li>English</li>
+                                    <li>Англійська</li>
                                     <li>Українська</li>
                                     <li>Російська</li>
                                 </ul>

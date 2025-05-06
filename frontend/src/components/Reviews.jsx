@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Review from './Review'
-import Modal from './Modal'
+import ModalReview from './ModalReview'
 import './styles/Reviews.css'
 
 const Reviews = () => {
@@ -50,11 +50,11 @@ const Reviews = () => {
       <div style={{ display: 'flex' }}>
         <div style={{ width: '33%' }}></div>
         <h1 style={{ width: '34%' }} className="namepage">
-          Reviews
+          Відгуки
         </h1>
         <div className="btn-add-review" style={{ width: '33%' }}>
           <button onClick={openModal} type="submit">
-            Add review
+            Додати відгук
           </button>
         </div>
       </div>
@@ -71,15 +71,16 @@ const Reviews = () => {
               />
             ))
           ) : (
-            <p className="review-component-loading">Loading...</p>
+            <p className="review-component-loading">Завантаження...</p>
           )}
         </div>
       </div>
       {isOpenedModal && (
-        <Modal
+        <ModalReview
           isOpenedModal={isOpenedModal}
           reviewArr={reviewArr}
           setIsOpenedModal={setIsOpenedModal}
+          getReviews={getReviews}
         />
       )}
     </div>

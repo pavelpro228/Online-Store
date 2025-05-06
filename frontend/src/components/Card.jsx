@@ -22,7 +22,7 @@ const Card = (props) => {
         </div>
         <p className='product-name' onClick={() => window.location.href = `/product/${props.name}`}>{props.name}</p>
         <div className='price-and-backet'>
-          <strong className='price'>Price: {props.price} $</strong>
+          <strong className='price'>Ціна: {props.price} $</strong>
           <FaBasketShopping className='basket-icon' onClick={() => {
             addProductToBasket(productInfo, props.setCountProducts)
           }}/>

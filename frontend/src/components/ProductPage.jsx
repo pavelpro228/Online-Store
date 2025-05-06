@@ -22,7 +22,7 @@ const ProductPage = () => {
     const product = products.find(p => p.name === name)
 
     if (!product)
-        return <p>Product not found</p>
+        return <p>Товар не знайдено</p>
   return (
     <div className='product-page'>
       <AboutPC 

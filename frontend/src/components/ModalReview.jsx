@@ -43,10 +43,6 @@ const Modal = (props) => {
     } catch (error) {
         console.log(error)
     }
-
-    // console.log(newReview)
-
-    // props.addNewReview(newReview)
   }
 
   return (
@@ -55,7 +51,7 @@ const Modal = (props) => {
         <div className="modal">
           <div className="feedback">
             <div style={{ display: 'flex', marginBottom: '40px' }}>
-              <p className="review-title">Write a review</p>
+              <p className="review-title">Написати відгук</p>
               <MdClose className="btn-close" onClick={closeModal} />
             </div>
             <form action="https://api.web3forms.com/submit" method="POST">
@@ -66,7 +62,7 @@ const Modal = (props) => {
               ></input>
               <div style={{ textAlign: 'center' }}>
                 <div className="feedback-name">
-                  <p className="field-name">Your name:</p>
+                  <p className="field-name">Ім'я:</p>
                   <input
                     type="text"
                     name="name"
@@ -77,7 +73,7 @@ const Modal = (props) => {
                   ></input>
                 </div>
                 <div className="feedback-review">
-                  <p className="field-name">Your review:</p>
+                  <p className="field-name">Ваш відгук:</p>
                   <textarea
                     type="text"
                     name="review"
@@ -95,7 +91,7 @@ const Modal = (props) => {
                     closeModal()
                   }}
                 >
-                  Add Review
+                  Додати відгук
                 </button>
               </div>
             </form>

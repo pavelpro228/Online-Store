@@ -19,20 +19,31 @@ app.post('/api/add-review', async (req, res) => {
 
     if (email) {
       if (!userName || !email)
-        return res.status(400).json({ message: 'Enter the values!' })
+        return res.status(400).json({ message: 'Введіть значення!' })
   
       const newReview = new reviewModel({
         userName,
         email,
         text,
       })
-      const save = await newReview.save()
-      return res.status(200).json({message: "Review added!"}, save)
+      const saveReview = await newReview.save()
+      
+      // const reviewsArr = new userModel
+      // const arr = reviewsArr.reviews
+      // const newArr = [arr, newReview]
+      // console.log(arr);
+      
+
+      // const updatedReviewArr = await userModel.findOneAndUpdate(
+      //   {email: email}, {reviews: newArr}
+      // )
+
+      return res.status(200).json({message: "Відгук додано!"}, saveReview)
     }
-    return res.status(400).json({ error: 'You are not authorized!' })
+    return res.status(400).json({ error: 'Ви не авторизовані!' })
   } catch (error) {
     console.log(error)
-    return res.status(400).json({ error: 'Error' })
+    return res.status(400).json({ error: 'Помилка' })
   }
 })
 
@@ -40,15 +51,15 @@ app.delete('/api/delete-review', async (req, res) => {
   try {
     const { id, email } = req.body
     if (!email) 
-      return res.status(400).json({ error: 'You are not authorized!' })
+      return res.status(400).json({ error: 'Ви не авторизовані!' })
     
     const deletedReview = await reviewModel.findByIdAndDelete(id)
 
-    return res.status(200).json({ message: 'Review deleted!' })
+    return res.status(200).json({ message: 'Відгук видалено!' })
   } catch (error) {
     console.log(error)
     if (!res.headersSent) {
-      return res.status(500).json({ error: 'Server error' });
+      return res.status(500).json({ error: 'Помилка' });
     }
   }
 })
@@ -63,14 +74,14 @@ app.post('/api/registration', async (req, res) => {
     const { name, surname, email, password, confirmPassword } = req.body
 
     if (!name || !surname || !email || !password || !confirmPassword)
-      return res.status(400).json({ error: 'Enter the values!' })
+      return res.status(400).json({ error: 'Введіть значення!' })
 
     if (password !== confirmPassword)
-      return res.status(400).json({ error: 'Passwords do not match!' })
+      return res.status(400).json({ error: 'Паролі не співпадають!' })
 
     const candidate = await userModel.findOne({ email })
     if (candidate)
-      return res.status(400).json({ error: 'Such user already exists!' })
+      return res.status(400).json({ error: 'Такий користувач вже існує!' })
 
     const user = new userModel({
       name,
@@ -83,12 +94,12 @@ app.post('/api/registration', async (req, res) => {
     return res
       .status(200)
       .json(
-        { message: 'You registered successfully!', email: save.email },
+        { message: 'Ви успішно авторизувалися!', email: save.email },
         save
       )
   } catch (error) {
     console.log(error)
-    return res.status(400).json({ error: 'Error' })
+    return res.status(400).json({ error: 'Помилка' })
   }
 })
 
@@ -97,18 +108,18 @@ app.post('/api/login', async (req, res) => {
     const { email, password } = req.body
 
     if (!email || !password)
-      return res.status(400).json({ error: 'Enter the values!' })
+      return res.status(400).json({ error: 'Введіть значення!' })
 
     const user = await userModel.findOne({ email })
-    if (!user) return res.status(400).json({ error: 'Email not found!' })
+    if (!user) return res.status(400).json({ error: 'Email не знайдено!' })
 
     if (password !== user.password)
-      return res.status(400).json({ error: 'Password is not valid!' })
+      return res.status(400).json({ error: 'Пароль неправильний!' })
 
-    return res.status(200).json({ message: 'Login successful!', email: email })
+    return res.status(200).json({ message: 'Ви авторизувалися успішно!', email: email })
   } catch (error) {
     console.log(error)
-    return res.status(400).json({ error: 'Error' })
+    return res.status(400).json({ error: 'Помилка' })
   }
 })
 
@@ -141,14 +152,14 @@ const addProductCount = async (res, email, product, candidate) => {
   const updatedCount = await basketModel.findOneAndUpdate(
     {email: email, 'product.name': product.name}, {count: candidate.count + 1}
   )
-  return res.status(200).json({ message: 'Product added to basket!' }, updatedCount)
+  return res.status(200).json(updatedCount)
 }
 
 const subProductCount = async (res, product, candidate) => {
   const updatedCount = await basketModel.findOneAndUpdate(
     {'product.name': product.name}, {count: candidate.count - 1}
   )
-  return res.status(200).json({ message: 'One product has been subtracted from your basket!' }, updatedCount)
+  return res.status(200).json(updatedCount)
 }
 
 app.post('/api/baskets', async (req, res) => {
@@ -165,14 +176,14 @@ app.post('/api/baskets', async (req, res) => {
           count
         })
         const save = await newBasket.save()
-        return res.status(200).json({ message: 'New product added to basket!' }, save)
+        return res.status(200).json({ message: 'Новий товар додано у кошик!' }, save)
       }
       return addProductCount(res, email, product, candidate)
     }
-    return res.status(400).json({ error: 'You are not authorized!' })
+    return res.status(400).json({ error: 'Ви не авторизовані!' })
   } catch (error) {
     console.log(error)
-    return res.status(400).json({ error: 'Error' })
+    return res.status(400).json({ error: 'Помилка' })
   }
 })
 
@@ -195,7 +206,7 @@ app.post('/api/get-products-in-basket', async (req, res) => {
     return res.status(200).json(products)
   } catch (error) {
     console.log(error)
-    return res.status(400).json({ error: 'Error' })
+    return res.status(400).json({ error: 'Помилка' })
   }
 })
 
@@ -203,7 +214,7 @@ app.delete('/api/delete-products-from-basket', async (req, res) => {
   try {
     const { _id } = req.body
     const deletedProduct = await basketModel.findOneAndDelete({_id: _id})
-    return res.status(200).json({ message: 'Product deleted from your basket!' })
+    return res.status(200).json({ message: 'Товар видалено з кошика!' })
   } catch (error) {
     console.log(error)
   }

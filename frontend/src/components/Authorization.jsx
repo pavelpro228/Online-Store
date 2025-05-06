@@ -181,7 +181,7 @@ const Authorization = () => {
             )}
             <div className="div-btn-sign-up">
               <button className="btn-sign-up" type="button" onClick={register}>
-                Register
+                Зареєструватися
               </button>
             </div>
           </div>
@@ -221,7 +221,7 @@ const Authorization = () => {
             )}
             <div className="div-btn-sign-up">
               <button className="btn-sign-up" type="button" onClick={login}>
-                Sign in
+                Увійти
               </button>
             </div>
           </div>

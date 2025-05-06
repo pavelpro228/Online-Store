@@ -7,9 +7,8 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
 const Header = () => {
     const [openedUserMenu, setUserMenu] = useState(false);
-    const [isLoginUser, setLoginUser] = useState(false);
     const [isOpenedModalLanguages, setIsOpenedModalLanguages] = useState(false);
-    const [isOpenedModalBasket, setIsOpenedModalBasket] = useState(false);
+    // const [isOpenedModalBasket, setIsOpenedModalBasket] = useState(false);
 
     const clickOnUserMenu = () => {
       setUserMenu(openedUserMenu => !openedUserMenu)
@@ -21,9 +20,14 @@ const Header = () => {
       setIsOpenedModalLanguages(isOpenedModalLanguages => !isOpenedModalLanguages);
       closeUserMenu();
     }
-    const openModalBasket = () => {
-      setIsOpenedModalBasket(isOpenedModalBasket => !isOpenedModalBasket);
-      closeUserMenu();
+    // const openModalBasket = () => {
+    //   setIsOpenedModalBasket(isOpenedModalBasket => !isOpenedModalBasket);
+    //   closeUserMenu();
+    // }
+    const logout = () => {
+      localStorage.removeItem('email')
+      closeUserMenu()
+      alert('Ви вийшли з акаунту!')
     }
 
     return (
@@ -40,22 +44,22 @@ const Header = () => {
             <ul>
                 <li>
                   <Link to="/">
-                    Main
+                    Головна
                   </Link>
                 </li>
                 <li>
                   <Link to="/about">
-                    About
+                    Про нас
                   </Link>
                 </li>
                 <li>
                   <Link to="/contacts">
-                    Contacts
+                    Контакти
                   </Link>
                 </li>
                 <li>
                   <Link to="/reviews">
-                    Reviews
+                    Відгуки
                   </Link>
                 </li>
             </ul>
@@ -65,11 +69,11 @@ const Header = () => {
               {openedUserMenu &&(
                 <ul className='user-menu'>
                   <div style={{width: "100%"}}>
-                    <Link to="/authorization">{!isLoginUser && <li onClick={closeUserMenu} className='authorization-button'>Sign up / Sign in</li>}</Link>
-                    <li onClick={openModalLanguages} className='basket-button'>Language</li>
+                    <Link to="/authorization">{!localStorage.getItem('email') && <li onClick={closeUserMenu} className='authorization-button'>Авторизація</li>}</Link>
+                    <li onClick={openModalLanguages} className='basket-button'>Мова</li>
                     {/* <li onClick={openModalBasket} className='basket-button'>Basket</li> */}
-                    <Link to="/myInfo"><li onClick={closeUserMenu} className='info-button'>My info</li></Link>
-                    <Link to="/signOut">{isLoginUser && <li onClick={closeUserMenu} className='sign-out-button'>Sign out</li>}</Link>
+                    <Link to="/myInfo"><li onClick={closeUserMenu} className='info-button'>Мій кабінет</li></Link>
+                    {localStorage.getItem('email') && <li onClick={logout} className='sign-out-button'>Вийти</li>}
                   </div>
                 </ul>
               )}

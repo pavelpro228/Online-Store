@@ -16,7 +16,7 @@ const Footer = () =>  {
       <footer className='footer'>
           <div className='social-networks-links-footer'>
             <p>
-              Our networks
+              Наші соцмережі
             </p>
             <ul className='networks'>
               <li>

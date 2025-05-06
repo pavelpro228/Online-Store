@@ -100,7 +100,7 @@ const Content = () => {
             }}
           >
             <button className="btn-open-backet" onClick={openModalBasket}>
-              My basket
+              Кошик
             </button>
           </div>
         </div>

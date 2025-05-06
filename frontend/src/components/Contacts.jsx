@@ -4,22 +4,22 @@ import { FaSquareXTwitter } from "react-icons/fa6";
 
 const Contacts = () =>  (
   <div className='contacts'>
-    <h1>Contacts</h1>
+    <h1>Контактна інформація</h1>
     <div className='list-contacts'>
       <ul>
         <li>
-          <strong>Phone:</strong> +3801234567890
+          <strong>Телефон:</strong> +3801234567890
         </li>
         <li>
-          <strong>Email:</strong> hardwarestore@gmail.com
+          <strong>Електронна пошта:</strong> hardwarestore@gmail.com
         </li>
         <li>
-          <strong>Business hours:</strong> 8AM - 8PM
+          <strong>Працюємо:</strong> 8:00 - 20:00
         </li>
       </ul>
       <div className='social-networks-links'>
         <p style={{textAlign: 'center', }}>
-          Our networks
+          Наші соцмережі
         </p>
         <div style={{display: "flex", justifyContent: "center" }}>
           <ul>

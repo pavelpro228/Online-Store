@@ -89,11 +89,11 @@ const Basket = (props) => {
         <div className="modal-basket">
           <div className="basket">
             <div style={{ display: 'flex', marginBottom: '40px' }}>
-              <p className="basket-title">Basket</p>
+              <p className="basket-title">Кошик</p>
               <MdClose className="btn-close" onClick={closeModal} />
             </div>
             {props.productsInBasket.length == 0 ? (
-              <p className="warning">You don't have any product!</p>
+              <p className="warning">У вас немає товарів у кошику!</p>
             ) : (
               props.productsInBasket.map((item, index) => (
                 <div key={index} style={{display: "flex", alignItems: "center"}}>
@@ -114,9 +114,9 @@ const Basket = (props) => {
             )}
             {props.productsInBasket.length > 0 && (
               <div style={{ marginTop: '30px' }}>
-                <strong>Total price: {totalPrice} $</strong>
+                <strong>Загальна ціна: {totalPrice} $</strong>
                 <div style={{ textAlign: 'center' }}>
-                  <button className="order-product">Order a products</button>
+                  <button className="order-product">Замовити</button>
                 </div>
               </div>
             )}
