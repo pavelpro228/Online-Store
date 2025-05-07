@@ -24,7 +24,7 @@ const Card = (props) => {
         <div className='price-and-backet'>
           <strong className='price'>Ціна: {props.price} $</strong>
           <FaBasketShopping className='basket-icon' onClick={() => {
-            addProductToBasket(productInfo, props.setCountProducts)
+            addProductToBasket(productInfo)
           }}/>
         </div>
       </div>

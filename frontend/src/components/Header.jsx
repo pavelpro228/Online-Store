@@ -8,7 +8,9 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 const Header = () => {
     const [openedUserMenu, setUserMenu] = useState(false);
     const [isOpenedModalLanguages, setIsOpenedModalLanguages] = useState(false);
-    // const [isOpenedModalBasket, setIsOpenedModalBasket] = useState(false);
+
+    const [isOpenedModalBasket, setIsOpenedModalBasket] = useState(false)
+    const [productsInBasket, setProductsInBasket] = useState([])
 
     const clickOnUserMenu = () => {
       setUserMenu(openedUserMenu => !openedUserMenu)
@@ -20,14 +22,14 @@ const Header = () => {
       setIsOpenedModalLanguages(isOpenedModalLanguages => !isOpenedModalLanguages);
       closeUserMenu();
     }
-    // const openModalBasket = () => {
-    //   setIsOpenedModalBasket(isOpenedModalBasket => !isOpenedModalBasket);
-    //   closeUserMenu();
-    // }
     const logout = () => {
       localStorage.removeItem('email')
       closeUserMenu()
       alert('Ви вийшли з акаунту!')
+    }
+
+    const openModalBasket = () => {
+      setIsOpenedModalBasket((isOpenedModalBasket) => !isOpenedModalBasket)
     }
 
     return (
@@ -37,10 +39,7 @@ const Header = () => {
             <p>Hardware Store</p>
           </Link>
         </div>
-          <div className='shop-info'>
-            <p>This is a simple website written in React.</p>
-          </div>
-          <nav className='header-list'>
+        <div className='navigation'>
             <ul>
                 <li>
                   <Link to="/">
@@ -62,27 +61,38 @@ const Header = () => {
                     Відгуки
                   </Link>
                 </li>
-            </ul>
-            <div className='user-button'>
-              <FaUserAlt onClick={clickOnUserMenu} className='user-button-icon'/>
+              </ul>
+          </div>
+          <div className='user'>
+            <button className="btn-open-basket" onClick={openModalBasket}>
+              Кошик
+            </button>
+            <FaUserAlt onClick={clickOnUserMenu} className='user-button'/>
+            <div className='burger-menu-button'>
+              <RxHamburgerMenu />
             </div>
-              {openedUserMenu &&(
-                <ul className='user-menu'>
-                  <div style={{width: "100%"}}>
-                    <Link to="/authorization">{!localStorage.getItem('email') && <li onClick={closeUserMenu} className='authorization-button'>Авторизація</li>}</Link>
-                    <li onClick={openModalLanguages} className='basket-button'>Мова</li>
-                    {/* <li onClick={openModalBasket} className='basket-button'>Basket</li> */}
-                    <Link to="/myInfo"><li onClick={closeUserMenu} className='info-button'>Мій кабінет</li></Link>
-                    {localStorage.getItem('email') && <li onClick={logout} className='sign-out-button'>Вийти</li>}
-                  </div>
-                </ul>
-              )}
-              <div className='burgermenu'>
-                <RxHamburgerMenu />
+          </div>
+          {openedUserMenu &&(
+            <ul className='user-menu'>
+              <div style={{width: "100%"}}>
+                <Link to="/authorization">{!localStorage.getItem('email') && <li onClick={closeUserMenu} className='authorization-button'>Авторизація</li>}</Link>
+                <li onClick={openModalLanguages} className='basket-button'>Мова</li>
+                <Link to="/myInfo"><li onClick={closeUserMenu} className='info-button'>Мій кабінет</li></Link>
+                {localStorage.getItem('email') && <li onClick={logout} className='sign-out-button'>Вийти</li>}
               </div>
-          </nav>
+            </ul>
+          )}
+          {isOpenedModalBasket && (
+            <ModalBasket
+              setIsOpenedModal={setIsOpenedModalBasket}
+              productsInBasket={productsInBasket}
+              setProductsInBasket={setProductsInBasket}
+            />
+          )} 
+          {/*
           {isOpenedModalLanguages && <ModalLanguage setIsOpenedModal={setIsOpenedModalLanguages}/>}
           
+           */}
       </header>
     );
 }

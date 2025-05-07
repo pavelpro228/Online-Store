@@ -1,4 +1,4 @@
-export const addProductToBasket = async (product, setCountProducts) => {
+export const addProductToBasket = async (product) => {
   try {
       const response = await fetch('/api/baskets', {
         method: 'POST',
@@ -10,7 +10,6 @@ export const addProductToBasket = async (product, setCountProducts) => {
       const data = await response.json()
       if (data.message) {
         alert(data.message)
-        // setCountProducts(count => count + 1)
       }
       if (data.error)
         alert(data.error)

@@ -3,19 +3,15 @@ import React, { useEffect, useState } from 'react'
 import Input from './Input'
 import AutoComplete from './AutoComplete'
 import Card from './Card'
-import ModalBasket from './ModalBasket'
 
 import './styles/AutoComplete.css'
 // import Carousel from './Carousel'
 
 const Content = () => {
   const [products, setProducts] = useState([])
-  const [productsInBasket, setProductsInBasket] = useState([])
-  const [countProducts, setCountProducts] = useState(1)
 
   const [value, setValue] = useState('')
   const [isOpened, setIsOpened] = useState(true)
-  const [isOpenedModalBasket, setIsOpenedModalBasket] = useState(false)
   const [totalPriceArr, setTotalPriceArr] = useState(
     JSON.parse(localStorage.getItem('totalArr')) || []
   )
@@ -43,26 +39,6 @@ const Content = () => {
   }
   const openHandler = () => {
     setIsOpened(true)
-  }
-  const openModalBasket = () => {
-    setIsOpenedModalBasket((isOpenedModalBasket) => !isOpenedModalBasket)
-  }
-  
-  const deleteProductFromBacket = (product) => {
-    const tempProducts = [...productsInBasket]
-    tempProducts.splice(product, 1)
-    setProductsInBasket(tempProducts)
-    localStorage.setItem('productInBasket', JSON.stringify(tempProducts))
-
-    totalPriceArr.splice(product, 1)
-    localStorage.setItem('totalArr', JSON.stringify(totalPriceArr))
-
-    let total = 0
-    for (let i = 0; i < totalPriceArr.length; i++) {
-      total += totalPriceArr[i]
-    }
-    setTotalPrice(total)
-    localStorage.setItem('totalPrice', JSON.stringify(total))
   }
 
   const addToTotal = (currentPrice) => {
@@ -99,9 +75,6 @@ const Content = () => {
               height: '100%',
             }}
           >
-            <button className="btn-open-backet" onClick={openModalBasket}>
-              Кошик
-            </button>
           </div>
         </div>
       </div>
@@ -134,8 +107,6 @@ const Content = () => {
                 name={item.name}
                 image={item.image}
                 price={item.price}
-                setCountProducts={setCountProducts}
-                // count={countProducts}
                 addToTotal={addToTotal}
               />
             ))
@@ -144,17 +115,6 @@ const Content = () => {
           )}
         </div>
       </div>
-      {isOpenedModalBasket && (
-        <ModalBasket
-          setIsOpenedModal={setIsOpenedModalBasket}
-          productsInBasket={productsInBasket}
-          setProductsInBasket={setProductsInBasket}
-          // deleteProductFromBacket={deleteProductFromBacket}
-          totalPrice={totalPrice}
-          countProducts={countProducts}
-          setTotalPrice={setTotalPrice}
-        />
-      )}
     </div>
   )
 }

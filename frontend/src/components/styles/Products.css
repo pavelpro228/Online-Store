@@ -45,20 +45,6 @@
 .basket-icon:hover {
     color: rgb(91, 91, 91);
 }
-.btn-open-backet {
-    padding: 15px;
-    outline: none;
-    background-color: rgb(255, 255, 255);
-    border: none;
-    border-radius: 10px;
-    font-size: 15px;
-    transition: 0.3s;
-}
-.btn-open-backet:hover {
-    cursor: pointer;
-    background-color: rgb(231, 231, 231);
-    transform: translateY(-5px);
-}
 
 @-ms-keyframes spin {
     from { -ms-transform: rotate(0deg); }

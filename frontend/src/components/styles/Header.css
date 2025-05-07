@@ -1,17 +1,11 @@
 header {
+    padding: 20px;
     background-color: rgb(74, 74, 74);
-    width: 100%;
     height: 90px;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
-.links-and-languages {
-    display: flex; 
-    justify-content: space-between;
-    align-items: center;
-    width: 33%;
 }
 .store-name {
     width: 33%;
@@ -32,45 +26,49 @@ header {
 .store-name a {
     text-decoration: none;
 }
-img {
-    width: 40px;
-    margin: 10px;
-    transition: 0.3s;
-}
-.shop-info {
-    font-size: 40px;
+.navigation {
     width: 34%;
 }
-.header-list {
-    display: flex;
-    justify-content: right;
-    width: 33%;
-    text-align: center;
-}
-.header-list ul {
+.navigation ul {
     display: flex;
     justify-content: center;
+    align-items: center;
     list-style: none;
 }
-.header-list li a {
+.navigation li a {
     color: white;
     text-decoration: none;
     font-size: 20px;
     transition: 0.3s;
 }
-.header-list li a:hover {
+.navigation li a:hover {
     color: rgb(214, 214, 214);
 }
-.header-list li {
+.navigation li {
     padding: 10px;
 }
-.user-button {
+.user {
+    width: 33%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    width: 15%;
 }
-.user-button-icon {
+.btn-open-basket {
+    margin-left: 50%;
+    padding: 15px;
+    outline: none;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    transition: 0.3s;
+}
+.btn-open-basket:hover {
+    cursor: pointer;
+    background-color: rgb(231, 231, 231);
+    transform: translateY(-5px);
+}
+.user-button {
     color: white;
     font-size: 30px;
     padding: 7px;
@@ -78,24 +76,26 @@ img {
     border-radius: 10px;
     transition: 0.3s;
 }
-.user-button-icon:hover {
+.user-button:hover {
     cursor: pointer;
     color: rgb(214, 214, 214);
     border-color: rgb(214, 214, 214);
 }
 .user-menu {
     position: absolute;
-    width: 200px;
+    width: 220px;
     right: 5px;
     top: 100px;
     background-color: white;
     border-radius: 10px;
     border: 1px solid black;
+    list-style: none;
 }
 .user-menu li {
     border-radius: 10px;
     font-size: 18px;
     transition: 0.3s;
+    padding: 10px;
 }
 .user-menu a {
     text-decoration: none;
@@ -105,72 +105,39 @@ img {
     cursor: pointer;
     background-color: rgb(153, 153, 153);
 }
-.burgermenu {
+.burger-menu-button {
     display: none;
 }
 
-@media(max-width: 1530px) {
-    .header-list li a {
+@media(max-width: 1280px) {
+    .store-name p {
+        font-size: 45px;
+    }
+    .navigation li a {
         font-size: 17px;
     }
 }
-@media(max-width: 1370px) {
-    .header-list ul,
+@media(max-width: 950px) {
+    .store-name p {
+        font-size: 30px;
+    }
+}
+@media(max-width: 920px) {
+    .navigation li {
+        display: none;
+    }
+}
+@media(max-width: 875px) {
+    .btn-open-basket,
     .user-button {
         display: none;
     }
-    .burgermenu {
+    .burger-menu-button {
         display: flex;
         align-items: center;
         justify-content: right;
         width: 100%;
         font-size: 50px;
         padding: 20px;
-    }
-}
-@media(max-width: 1280px) {
-    .store-name p {
-        font-size: 45px;
-    }
-}
-@media(max-width: 1150px) {
-    .store-name p {
-        font-size: 40px;
-    }
-}
-@media(max-width: 1030px) {
-    .store-name p {
-        font-size: 35px;
-    }
-}
-@media(max-width: 900px) {
-    .store-name p {
-        font-size: 30px;
-    }
-}
-@media(max-width: 865px) {
-    .shop-info {
-        display: none;
-    }
-    .store-name {
-        width: 67%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-}
-@media(max-width: 850px) {
-    .store-name p {
-        font-size: 50px;
-    }
-}
-@media(max-width: 630px) {
-    .store-name p {
-        font-size: 35px;
-    }
-}
-@media(max-width: 450px) {
-    .store-name p {
-        font-size: 30px;
     }
 }
