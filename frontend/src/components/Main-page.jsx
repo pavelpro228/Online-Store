@@ -20,7 +20,6 @@ const Content = () => {
   const getProducts = async () => {
     const response = await fetch('/api/products')
     const body = await response.json()
-    localStorage.setItem('products', JSON.stringify(body))
 
     return body
   }

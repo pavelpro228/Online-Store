@@ -94,7 +94,7 @@ app.post('/api/registration', async (req, res) => {
     return res
       .status(200)
       .json(
-        { message: 'Ви успішно авторизувалися!', email: save.email },
+        { message: 'Ви успішно авторизувалися!', email: save.email, name: save.name },
         save
       )
   } catch (error) {
@@ -116,7 +116,7 @@ app.post('/api/login', async (req, res) => {
     if (password !== user.password)
       return res.status(400).json({ error: 'Пароль неправильний!' })
 
-    return res.status(200).json({ message: 'Ви авторизувалися успішно!', email: email })
+    return res.status(200).json({ message: 'Ви авторизувалися успішно!', email: email, name: user.name })
   } catch (error) {
     console.log(error)
     return res.status(400).json({ error: 'Помилка' })
@@ -236,7 +236,8 @@ app.get('/api/products', (req, res) => {
         graphicsCard: 'NVIDIA GeForce GTX 1660 Super 6GB',
         ram: '16GB DDR4',
         storage: '512GB SSD',
-        operatingSystem: 'Windows 11 Home'
+        operatingSystem: 'Windows 11 Home',
+        firm: "Artline"
       }
     },
     {
@@ -250,7 +251,8 @@ app.get('/api/products', (req, res) => {
         graphicsCard: 'Integrated Radeon Graphics',
         ram: '16GB DDR4',
         storage: '1TB HDD + 256GB SSD',
-        operatingSystem: 'Windows 10 Pro'
+        operatingSystem: 'Windows 10 Pro',
+        firm: "Artline"
       }
     },
     {
@@ -264,7 +266,8 @@ app.get('/api/products', (req, res) => {
         graphicsCard: 'NVIDIA GeForce RTX 3050 8GB',
         ram: '16GB DDR4',
         storage: '1TB SSD',
-        operatingSystem: 'Windows 11 Home'
+        operatingSystem: 'Windows 11 Home',
+        firm: "Artline"
       }
     },
     {
@@ -279,7 +282,8 @@ app.get('/api/products', (req, res) => {
         backlight: 'Rainbow LED',
         layout: 'Ukrainian/English',
         keyRollover: '19-Key Anti-Ghosting',
-        wristRest: ''
+        wristRest: '',
+        firm: "2E GAMING"
       }
     },
     {
@@ -294,7 +298,8 @@ app.get('/api/products', (req, res) => {
         backlight: 'RGB',
         layout: 'English',
         keyRollover: '',
-        wristRest: ''
+        wristRest: '',
+        firm: "GamePro"
       }
     },
     {
@@ -309,7 +314,8 @@ app.get('/api/products', (req, res) => {
         backlight: 'Single-zone RGB',
         layout: 'Ukrainian/English',
         keyRollover: '',
-        wristRest: 'Detachable'
+        wristRest: 'Detachable',
+        firm: "Razer"
       }
     },
     {
@@ -323,7 +329,8 @@ app.get('/api/products', (req, res) => {
         dpi: '800 / 1200 / 1600',
         buttons: '6',
         lighting: 'Green LED',
-        sensorType: 'Optical'
+        sensorType: 'Optical',
+        firm: "Esperanza"
       }
     },
     {
@@ -337,7 +344,8 @@ app.get('/api/products', (req, res) => {
         dpi: '200 – 8000',
         buttons: '6 Programmable',
         lighting: 'RGB Lightsync',
-        sensorType: 'Gaming-grade Optical'
+        sensorType: 'Gaming-grade Optical',
+        firm: "Logitech"
       }
     },
     {
@@ -351,7 +359,8 @@ app.get('/api/products', (req, res) => {
         dpi: '6400',
         buttons: '5 Programmable',
         lighting: 'Green Backlight',
-        sensorType: 'Optical'
+        sensorType: 'Optical',
+        firm: "Razer"
       }
     },
   ])

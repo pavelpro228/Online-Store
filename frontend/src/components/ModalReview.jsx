@@ -3,10 +3,10 @@ import { MdClose } from 'react-icons/md'
 import './styles/modal.css'
 
 const Modal = (props) => {
-  const [name, setName] = useState('')
   const [review, setReview] = useState('')
   
-  const email = localStorage.getItem('email')
+  const email = JSON.parse(localStorage.getItem('user'))?.email
+  const name = JSON.parse(localStorage.getItem('user'))?.name
 
   const closeModal = () => {
     props.setIsOpenedModal((isOpenedModal) => !isOpenedModal)
@@ -18,7 +18,6 @@ const Modal = (props) => {
   const handleReviewChanged = (e) => {
     setReview(e.target.value)
   }
-
   const sendReview = async () => {
     try {
       const newReview = {
@@ -61,17 +60,6 @@ const Modal = (props) => {
                 value="05326e0d-1a96-497c-afda-7d51d79350bf"
               ></input>
               <div style={{ textAlign: 'center' }}>
-                <div className="feedback-name">
-                  <p className="field-name">Ім'я:</p>
-                  <input
-                    type="text"
-                    name="name"
-                    id="get-name"
-                    value={name}
-                    onChange={handleNameChanged}
-                    required
-                  ></input>
-                </div>
                 <div className="feedback-review">
                   <p className="field-name">Ваш відгук:</p>
                   <textarea

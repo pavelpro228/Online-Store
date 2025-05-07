@@ -55,7 +55,7 @@ const Authorization = () => {
       if (data.error) setError(data.error)
       else {
         alert(data.message)
-        localStorage.setItem('email', data.email)
+        localStorage.setItem('user', JSON.stringify({email: data.email, name: data.name}))
         setError('')
         setNameRegister('')
         setSurnameRegister('')
@@ -85,7 +85,7 @@ const Authorization = () => {
         if (data.error) setError(data.error)
         else {
           alert(data.message)
-          localStorage.setItem('email', data.email)
+          localStorage.setItem('user', JSON.stringify({email: data.email, name: data.name}))
           setError('')
           setEmailLogin('')
           setPasswordLogin('')

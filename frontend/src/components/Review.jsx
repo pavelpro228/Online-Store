@@ -14,7 +14,7 @@ const Review = (props) => {
           <span className='title-data'>Відгук:</span> <span className='data-info'>{props.reviewText}</span>
           </p>
         </div>
-        {props.email === localStorage.getItem('email') && <div style={{textAlign: "right"}}>
+        {props.email === JSON.parse(localStorage.getItem('user'))?.email && <div style={{textAlign: "right"}}>
           <IoTrashBinSharp onClick={props.deleteReview} className='delete-review'/>
         </div>}
       </div>

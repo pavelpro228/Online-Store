@@ -7,7 +7,7 @@ import './styles/AboutPC.css'
 
 const AboutPC = (props) => {
   const productInfo = {
-    email: localStorage.getItem('email'),
+    email: JSON.parse(localStorage.getItem('user'))?.email,
     product: {
       name: props.name,
       price: props.price,
@@ -36,8 +36,7 @@ const AboutPC = (props) => {
               <div style={{display: "flex"}}>
                 <strong className='product-option'>Price: {props.price} $</strong>
                 <FaBasketShopping className='basket-icon' onClick={() => {
-                  addProductToBasket(productInfo)
-                  // props.addToTotal(productInfo.product.price);          
+                  addProductToBasket(productInfo)         
                 }}/>
               </div>
             </div>

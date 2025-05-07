@@ -23,7 +23,7 @@ const Header = () => {
       closeUserMenu();
     }
     const logout = () => {
-      localStorage.removeItem('email')
+      localStorage.removeItem('user')
       closeUserMenu()
       alert('Ви вийшли з акаунту!')
     }
@@ -75,10 +75,10 @@ const Header = () => {
           {openedUserMenu &&(
             <ul className='user-menu'>
               <div style={{width: "100%"}}>
-                <Link to="/authorization">{!localStorage.getItem('email') && <li onClick={closeUserMenu} className='authorization-button'>Авторизація</li>}</Link>
+                <Link to="/authorization">{!localStorage.getItem('user') && <li onClick={closeUserMenu} className='authorization-button'>Авторизація</li>}</Link>
                 <li onClick={openModalLanguages} className='basket-button'>Мова</li>
                 <Link to="/myInfo"><li onClick={closeUserMenu} className='info-button'>Мій кабінет</li></Link>
-                {localStorage.getItem('email') && <li onClick={logout} className='sign-out-button'>Вийти</li>}
+                {localStorage.getItem('user') && <li onClick={logout} className='sign-out-button'>Вийти</li>}
               </div>
             </ul>
           )}
@@ -88,11 +88,7 @@ const Header = () => {
               productsInBasket={productsInBasket}
               setProductsInBasket={setProductsInBasket}
             />
-          )} 
-          {/*
-          {isOpenedModalLanguages && <ModalLanguage setIsOpenedModal={setIsOpenedModalLanguages}/>}
-          
-           */}
+          )}
       </header>
     );
 }

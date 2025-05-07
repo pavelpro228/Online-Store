@@ -18,7 +18,7 @@ const Basket = (props) => {
       headers: {
         'Content-type': 'application/json',
       },
-      body: JSON.stringify({ email: localStorage.getItem('email') }),
+      body: JSON.stringify({ email: JSON.parse(localStorage.getItem('user'))?.email, }),
     })
     const data = await response.json()
     props.setProductsInBasket(data)
@@ -54,7 +54,7 @@ const Basket = (props) => {
         },
         body: JSON.stringify({ 
           product: product, 
-          email: localStorage.getItem('email') 
+          email: JSON.parse(localStorage.getItem('user'))?.email,
         }),
       })
       const data = await response.json()
@@ -73,7 +73,7 @@ const Basket = (props) => {
         },
         body: JSON.stringify({ 
           product: product, 
-          email: localStorage.getItem('email') 
+          email: JSON.parse(localStorage.getItem('user'))?.email,
         }),
       })
       const data = await response.json()

@@ -31,7 +31,7 @@ const Reviews = () => {
           headers: {
             'Content-type': 'application/json',
           },
-          body: JSON.stringify({ id: id, email: localStorage.getItem('email') }),
+          body: JSON.stringify({ id: id, email: JSON.parse(localStorage.getItem('user'))?.email }),
           
         })
         setReviews(prev => prev.filter(r => r._id !== id));

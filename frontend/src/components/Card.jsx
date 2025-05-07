@@ -7,7 +7,7 @@ import "./styles/Products.css"
 
 const Card = (props) => {
   const productInfo = {
-    email: localStorage.getItem('email'),
+    email: JSON.parse(localStorage.getItem('user'))?.email,
     product: {
       name: props.name,
       price: props.price,
