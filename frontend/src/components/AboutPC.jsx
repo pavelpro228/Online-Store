@@ -22,7 +22,7 @@ const AboutPC = (props) => {
         <div className='image-block'>
           <div style={{display: "flex", alignItems: "center", backgroundColor: "white", height: "450px", width: "450px", borderRadius: "15px",}}>
             <div style={{ display: "flex", justifyContent: "center"}}>
-              <img style={{width: "80%"}} src={props.image} alt=""/>
+              <img style={{width: "80%"}} src={props.image} alt="Product Image"/>
             </div>
           </div>
         </div>
@@ -31,7 +31,7 @@ const AboutPC = (props) => {
             <div style={{marginBottom: "20px"}}>
               <span className='product-option'>{props.description}</span>
             </div>
-            <Specs specs={props.specs}/>
+            <Specs specs={props.specs} manufacturer={props.manufacturer}/>
             <div className='price-block'>
               <div style={{display: "flex"}}>
                 <strong className='product-option'>Price: {props.price} $</strong>

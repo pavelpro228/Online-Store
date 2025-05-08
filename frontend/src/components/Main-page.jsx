@@ -102,7 +102,7 @@ const Content = () => {
           {value && isOpened
             ? filteredProducts.map((item) => (
                 <AutoComplete
-                  key={item.id}
+                  key={item._id}
                   name={item.name}
                   itemClickHandler={itemClickHandler}
                 />
@@ -115,8 +115,8 @@ const Content = () => {
           {filteredProducts.length > 0 ? (
             filteredProducts.map((item) => (
               <Card
-                key={item.id}
-                id={item.id}
+                key={item._id}
+                id={item._id}
                 name={item.name}
                 image={item.image}
                 price={item.price}

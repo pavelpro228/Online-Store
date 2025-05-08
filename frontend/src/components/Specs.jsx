@@ -6,7 +6,7 @@ const Specs = (props) => {
         <h1>Характеристики: </h1>
         {props.specs.type === "Computer" && 
             <div className='product-specs'>
-                <p>Фірма:</p> {props.specs.firm}
+                <p>Виробник:</p> {props.manufacturer}
                 <p>Процесор:</p> {props.specs.processor}
                 <p>Відеокарта:</p> {props.specs.graphicsCard}
                 <p>Оперативна пам'ять:</p> {props.specs.ram}
@@ -16,7 +16,7 @@ const Specs = (props) => {
         }
         {props.specs.type === "Keyboard" && 
             <div className='product-specs'>
-                <p>Фірма:</p> {props.specs.firm}
+                <p>Виробник:</p> {props.manufacturer}
                 <p>Підключення:</p> {props.specs.connection}
                 <p>Тип перемикача:</p> {props.specs.switchType}
                 <p>Підсвічування:</p> {props.specs.backlight}
@@ -27,7 +27,7 @@ const Specs = (props) => {
         }
         {props.specs.type === "Mouse" && 
             <div className='product-specs'>
-                <p>Фірма:</p> {props.specs.firm}
+                <p>Виробник:</p> {props.manufacturer}
                 <p>Підключення:</p> {props.specs.connection}
                 <p>DPI:</p> {props.specs.dpi}
                 <p>Кнопки:</p> {props.specs.buttons}
