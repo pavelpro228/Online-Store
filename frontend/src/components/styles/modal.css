@@ -14,7 +14,8 @@
     color: black;
 }
 .modal,
-.modal-basket {
+.modal-basket,
+.modal-product-settings {
     background: white;
     padding: 50px;
     border-radius: 8px;

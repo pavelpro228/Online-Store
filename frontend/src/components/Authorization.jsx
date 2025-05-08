@@ -56,6 +56,7 @@ const Authorization = () => {
       else {
         alert(data.message)
         localStorage.setItem('user', JSON.stringify({email: data.email, name: data.name}))
+        window.location.href = '/myInfo'
         setError('')
         setNameRegister('')
         setSurnameRegister('')
@@ -86,6 +87,7 @@ const Authorization = () => {
         else {
           alert(data.message)
           localStorage.setItem('user', JSON.stringify({email: data.email, name: data.name}))
+          window.location.href = '/myInfo'
           setError('')
           setEmailLogin('')
           setPasswordLogin('')

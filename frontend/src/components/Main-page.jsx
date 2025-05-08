@@ -3,6 +3,9 @@ import React, { useEffect, useState } from 'react'
 import Input from './Input'
 import AutoComplete from './AutoComplete'
 import Card from './Card'
+import ModalProductFilter from './ModalProductFilter'
+
+import { LuSettings2 } from "react-icons/lu";
 
 import './styles/AutoComplete.css'
 // import Carousel from './Carousel'
@@ -12,6 +15,7 @@ const Content = () => {
 
   const [value, setValue] = useState('')
   const [isOpened, setIsOpened] = useState(true)
+  const [isOpenedProductFilter, setIsOpenedProductFilter] = useState(false)
   const [totalPriceArr, setTotalPriceArr] = useState(
     JSON.parse(localStorage.getItem('totalArr')) || []
   )
@@ -56,14 +60,24 @@ const Content = () => {
     localStorage.setItem('totalPrice', JSON.stringify(total))
   }
 
+  const handleProductFilter = () => {
+    setIsOpenedProductFilter(!isOpenedProductFilter)
+  }
+
   return (
     <div className="content-main-page">
       {/* <Carousel /> */}
       <div style={{ display: 'flex', width: '100%' }}>
         <div style={{ width: '20%' }}></div>
-        <div style={{ width: '60%' }}>
-          <Input setValue={setValue} value={value} openHandler={openHandler} />
+        <div style={{ width: '60%', display: "flex", justifyContent: "center" }}>
+          <div style={{display: "flex"}}>
+            <Input setValue={setValue} value={value} openHandler={openHandler} />
+            <div style={{display: "flex", alignItems: "center", marginLeft: "20px"}}>
+              <LuSettings2 className='settings-products-button' onClick={handleProductFilter}/>
+            </div>
+          </div>
         </div>
+        
         <div style={{ width: '20%' }}>
           <div
             style={{
@@ -114,6 +128,7 @@ const Content = () => {
           )}
         </div>
       </div>
+      {isOpenedProductFilter && <ModalProductFilter handleProductFilter={handleProductFilter}/>}
     </div>
   )
 }
