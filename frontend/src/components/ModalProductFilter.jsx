@@ -1,8 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { MdClose } from 'react-icons/md'
 import './styles/ProductFilter.css'
 
 const ModalProductFilter = (props) => {
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [selectedBrands, setSelectedBrands] = useState([]);
+
+  const handleCategoryChange = (event) => {
+    const { id, checked } = event.target;
+    setSelectedCategories((prev) =>
+      checked ? [...prev, id] : prev.filter((item) => item !== id)
+    );
+  };
+  const handleBrandChange = (event) => {
+    const { id, checked } = event.target;
+    setSelectedBrands((prev) =>
+      checked ? [...prev, id] : prev.filter((item) => item !== id)
+    );
+  };
+
+  const handleApplyFilter = () => {
+    console.log('Вибрані категорії:', selectedCategories);
+    console.log('Вибрані виробники:', selectedBrands);
+  };
+
   return (
     <div className="modal-overlay">
       <div className="modal-product-settings">
@@ -13,41 +34,41 @@ const ModalProductFilter = (props) => {
         <div className='filter-title'>
           <p>Каталог товарів: </p>
           <div>
-            <input type="checkbox" id="scales" name="Computer" />
-            <label for="Computer">Комп'ютери</label>
+            <input type="checkbox" id='Computer' onChange={handleCategoryChange}/>
+            <label htmlFor="Computer">Комп'ютери</label>
           </div>
           <div>
-            <input type="checkbox" id="scales" name="Keyboard" />
-            <label for="Keyboard">Клавіатури</label>
+            <input type="checkbox" id="Keyboard" onChange={handleCategoryChange}/>
+            <label htmlFor="Keyboard">Клавіатури</label>
           </div>
           <div>
-            <input type="checkbox" id="scales" name="Mouse" />
-            <label for="Mouse">Комп'ютерні мишки</label>
+            <input type="checkbox" id="Mouse" onChange={handleCategoryChange}/>
+            <label htmlFor="Mouse">Комп'ютерні мишки</label>
           </div>
           <p>Виробник: </p>
           <div>
-            <input type="checkbox" id="scales" name="Artline" />
-            <label for="Artline">Artline</label>
+            <input type="checkbox" id="Artline" onChange={handleBrandChange}/>
+            <label htmlFor="Artline">Artline</label>
           </div>
           <div>
-            <input type="checkbox" id="scales" name="2E GAMING" />
-            <label for="2E GAMING">2E GAMING</label>
+            <input type="checkbox" id="2E GAMING" onChange={handleBrandChange}/>
+            <label htmlFor="2E GAMING">2E GAMING</label>
           </div>
           <div>
-            <input type="checkbox" id="scales" name="GamePro" />
-            <label for="GamePro">GamePro</label>
+            <input type="checkbox" id="GamePro" onChange={handleBrandChange}/>
+            <label htmlFor="GamePro">GamePro</label>
           </div>
           <div>
-            <input type="checkbox" id="scales" name="Razer" />
-            <label for="Razer">Razer</label>
+            <input type="checkbox" id="Razer" onChange={handleBrandChange}/>
+            <label htmlFor="Razer">Razer</label>
           </div>
           <div>
-            <input type="checkbox" id="scales" name="Esperanza" />
-            <label for="Esperanza">Esperanza</label>
+            <input type="checkbox" id="Esperanza" onChange={handleBrandChange}/>
+            <label htmlFor="Esperanza">Esperanza</label>
           </div>
           <div>
-            <input type="checkbox" id="scales" name="Logitech" />
-            <label for="Logitech">Logitech</label>
+            <input type="checkbox" id="Logitech" onChange={handleBrandChange}/>
+            <label htmlFor="Logitech">Logitech</label>
           </div>
           <p>Ціна: </p>
           <div style={{display: "flex"}}>
@@ -57,7 +78,11 @@ const ModalProductFilter = (props) => {
             <input style={{width: "100px", fontSize: "30px", borderRadius: "10px", outline: "none"}} type="number" min={1} max={1000}/><p>$</p>
           </div>
         </div>
-        <button className='apply-filter-button'>Зробити фільтр</button>
+        <button className='apply-filter-button' onClick={() => {
+          props.filteredProductsByCategory(selectedCategories)
+          props.handleProductFilter()
+          
+        }}>Зробити фільтр</button>
       </div>
     </div>
   )

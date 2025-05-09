@@ -20,6 +20,7 @@ const Content = () => {
     JSON.parse(localStorage.getItem('totalArr')) || []
   )
   const [totalPrice, setTotalPrice] = useState(0)
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
   const getProducts = async () => {
     const response = await fetch('/api/products')
@@ -32,9 +33,16 @@ const Content = () => {
     getProducts().then((res) => setProducts(res))
   }, [])
 
-  const filteredProducts = products.filter((product) => {
+  const searchedProducts = products.filter((product) => {
     return product.name.toLowerCase().includes(value.toLowerCase())
   })
+
+  const filteredProductsByCategory = (categoryArr) => {
+    const filtered = products.filter(product =>
+      categoryArr.includes(product.specs.type)
+    );
+    setFilteredProducts(filtered);
+  }
 
   const itemClickHandler = (e) => {
     setValue(e.target.textContent)
@@ -100,7 +108,7 @@ const Content = () => {
       >
         <ul className="autocomplete">
           {value && isOpened
-            ? filteredProducts.map((item) => (
+            ? (filteredProducts.length > 0 ? filteredProducts : searchedProducts).map((item) => (
                 <AutoComplete
                   key={item._id}
                   name={item.name}
@@ -112,23 +120,19 @@ const Content = () => {
       </div>
       <div style={{display: "flex", justifyContent: "center"}}>
         <div className="products">
-          {filteredProducts.length > 0 ? (
-            filteredProducts.map((item) => (
-              <Card
-                key={item._id}
-                id={item._id}
-                name={item.name}
-                image={item.image}
-                price={item.price}
-                addToTotal={addToTotal}
-              />
-            ))
-          ) : (
-            <div className="preloader"></div>
-          )}
+          {products.length > 0 ? (filteredProducts.length > 0 ? filteredProducts : searchedProducts).map((item) => (
+            <Card
+              key={item._id}
+              id={item._id}
+              name={item.name}
+              image={item.image}
+              price={item.price}
+              addToTotal={addToTotal}
+            />
+          )) : <div className="preloader"></div>}
         </div>
       </div>
-      {isOpenedProductFilter && <ModalProductFilter handleProductFilter={handleProductFilter}/>}
+      {isOpenedProductFilter && <ModalProductFilter filteredProductsByCategory={filteredProductsByCategory} handleProductFilter={handleProductFilter}/>}
     </div>
   )
 }
