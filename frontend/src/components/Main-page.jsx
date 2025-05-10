@@ -33,15 +33,27 @@ const Content = () => {
     getProducts().then((res) => setProducts(res))
   }, [])
 
+  const handleProductFilter = () => {
+    setIsOpenedProductFilter(!isOpenedProductFilter)
+  }
+
   const searchedProducts = products.filter((product) => {
     return product.name.toLowerCase().includes(value.toLowerCase())
   })
 
-  const filteredProductsByCategory = (categoryArr) => {
-    const filtered = products.filter(product =>
-      categoryArr.includes(product.specs.type)
-    );
-    setFilteredProducts(filtered);
+  const productsFilter = (categoryArr, brandArr) => {
+    const filter = products.filter(product => {
+      if (categoryArr.length > 0 && brandArr.length > 0)
+        return (categoryArr.includes(product.specs.type) && brandArr.includes(product.manufacturer))
+      else if (categoryArr.length > 0 || brandArr.length > 0)
+        return (categoryArr.includes(product.specs.type) || brandArr.includes(product.manufacturer))
+    });
+
+    if (filter.length == 0) alert('Таких товарів немає :(')
+    else {
+      setFilteredProducts(filter);
+      handleProductFilter()
+    }
   }
 
   const itemClickHandler = (e) => {
@@ -66,10 +78,6 @@ const Content = () => {
     console.log(total)
     setTotalPrice(total)
     localStorage.setItem('totalPrice', JSON.stringify(total))
-  }
-
-  const handleProductFilter = () => {
-    setIsOpenedProductFilter(!isOpenedProductFilter)
   }
 
   return (
@@ -108,7 +116,7 @@ const Content = () => {
       >
         <ul className="autocomplete">
           {value && isOpened
-            ? (filteredProducts.length > 0 ? filteredProducts : searchedProducts).map((item) => (
+            ? (searchedProducts).map((item) => (
                 <AutoComplete
                   key={item._id}
                   name={item.name}
@@ -132,7 +140,7 @@ const Content = () => {
           )) : <div className="preloader"></div>}
         </div>
       </div>
-      {isOpenedProductFilter && <ModalProductFilter filteredProductsByCategory={filteredProductsByCategory} handleProductFilter={handleProductFilter}/>}
+      {isOpenedProductFilter && <ModalProductFilter productsFilter={productsFilter} handleProductFilter={handleProductFilter}/>}
     </div>
   )
 }

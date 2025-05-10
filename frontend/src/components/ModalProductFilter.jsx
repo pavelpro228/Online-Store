@@ -79,8 +79,8 @@ const ModalProductFilter = (props) => {
           </div>
         </div>
         <button className='apply-filter-button' onClick={() => {
-          props.filteredProductsByCategory(selectedCategories)
-          props.handleProductFilter()
+          props.productsFilter(selectedCategories, selectedBrands)
+          
           
         }}>Зробити фільтр</button>
       </div>
